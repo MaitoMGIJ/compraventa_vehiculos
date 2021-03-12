@@ -1,10 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "maitomgij/compraventa_vehiculos",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Compraventa de Vehiculos",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "compraventa",
+        "vehiculos"
     ],
     "license": "MIT",
     "require": {
