@@ -13,7 +13,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('tags.home') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('vehicle.index') }}" :active="request()->routeIs('vehicle')">
+                        {{ trans_choice('tags.vehicle', 2) }}
                     </x-jet-nav-link>
                 </div>
             </div>

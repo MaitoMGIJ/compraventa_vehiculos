@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum'])->resource('vehicle', VehicleController::class);
+
+Route::post('brand/type', [FormController::class, 'brandType'])->name('brand.type');
+Route::post('reference/brand/type', [FormController::class, 'referenceBrand'])->name('reference.brand');
