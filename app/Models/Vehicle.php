@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasDefaultImage;
+use App\Traits\HasCheckExistsUrl;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Vehicle extends Model
 {
-    use HasFactory;
+    use HasFactory, HasDefaultImage, HasCheckExistsUrl;
 
     protected $fillable = ['license', 'type', 'brand', 'reference', 'model', 'color', 'photo', 'comment', 'is_active'];
 
@@ -34,7 +36,11 @@ class Vehicle extends Model
     }
 
     public function getUrlAttribute(){
-        return url("storage/{$this->photo}");
+        return url("storage/".$this->photo);
+    }
+
+    public function getImageAttribute(){
+        return $this->getImage();
     }
 
     public function getTransactions(){
