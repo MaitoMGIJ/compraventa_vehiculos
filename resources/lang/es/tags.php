@@ -16,5 +16,12 @@ return [
     'comment' => 'Comentario',
     'photo' => 'Foto',
     'save' => 'Guardar',
-    'upload_photo' => 'Cargar Foto'
+    'upload_photo' => 'Cargar Foto',
+    'transaction_type' => 'Tipo de Transacción',
+    'value' => 'Valor',
+    'date' => 'Fecha',
+    'upload_support' => 'Cargar Soporte',
+    'agent' => 'Asesor',
+    'commission' => 'Comisión',
+    'color' => 'Color'
 ];

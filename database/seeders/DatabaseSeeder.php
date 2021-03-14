@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agent;
+use App\Models\TransactionType;
 use App\Models\VehicleBrand;
 use App\Models\VehicleReference;
 use App\Models\VehicleType;
@@ -16,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //Users
         \App\Models\User::factory(1)->create();
 
         //Types
@@ -93,6 +96,34 @@ class DatabaseSeeder extends Seeder
             'brand' => $suzuki,
             'description' => 'GIXXER 150'
         ]);
+
+        //Transaction Types
+        TransactionType::create([
+            'description' => 'COMPRA',
+            'entry' => true,
+            'end' => false,
+            'expense' => false,
+            'income'=> false
+        ]);
+
+        TransactionType::create([
+            'description' => 'EMPEÑO',
+            'entry' => true,
+            'end' => false,
+            'expense' => false,
+            'income'=> false
+        ]);
+
+        TransactionType::create([
+            'description' => 'VENTA',
+            'entry' => false,
+            'end' => true,
+            'expense' => false,
+            'income'=> false
+        ]);
+
+        //Agents
+        Agent::factory(5)->create();
 
     }
 }

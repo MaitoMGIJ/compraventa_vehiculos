@@ -19,11 +19,16 @@ class CreateVehiclesTable extends Migration
             $table->bigInteger('type');
             $table->bigInteger('brand');
             $table->bigInteger('reference');
-            $table->bigInteger('model');
-            $table->bigInteger('color');
-            $table->text('photo_path')->nullable();
+            $table->integer('model');
+            $table->string('color');
+            $table->text('photo')->nullable();
             $table->text('comment');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
+
+            $table->foreign('type')->references('id')->on('vehicle_types');
+            $table->foreign('brand')->references('id')->on('vehicle_brands');
+            $table->foreign('reference')->references('id')->on('vehicle_references');
         });
     }
 

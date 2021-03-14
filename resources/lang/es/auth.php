@@ -19,5 +19,8 @@ return [
     'email' => 'Email',
     'password' => 'Contraseña',
     'rememberme' => 'Recordarme',
-    'login' => 'Ingresar'
+    'login' => 'Ingresar',
+    'logout' => 'Cerrar Sesión',
+    'manage_account' => 'Administrar Cuenta',
+    'profile' => 'Perfil'
 ];

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehicleBrandsTable extends Migration
+class CreateTransactionTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateVehicleBrandsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehicle_brands', function (Blueprint $table) {
+        Schema::create('transaction_types', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('type');
             $table->string('description');
+            $table->boolean('entry')->default(true);
+            $table->boolean('end')->default(true);
+            $table->boolean('expense')->default(true);
+            $table->boolean('income')->default(true);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-
-            $table->foreign('type')->references('id')->on('vehicle_types');
         });
     }
 
@@ -31,6 +32,6 @@ class CreateVehicleBrandsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicle_brands');
+        Schema::dropIfExists('transaction_types');
     }
 }
