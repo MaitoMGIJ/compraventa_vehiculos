@@ -3,8 +3,9 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Vehicle;
 
-class message-card extends Component
+class VehicleList extends Component
 {
     /**
      * Create a new component instance.
@@ -23,6 +24,7 @@ class message-card extends Component
      */
     public function render()
     {
-        return view('components.message-card');
+        $vehicles = Vehicle::orderBy('created_at', 'desc')->paginate(9);
+        return view('components.vehicle-list', ['vehicles' => $vehicles]);
     }
 }
