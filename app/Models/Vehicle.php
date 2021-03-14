@@ -24,7 +24,7 @@ class Vehicle extends Model
     }
 
     public function transactions(){
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class, 'vehicle_id');
     }
 
     public function getNameAttribute(){

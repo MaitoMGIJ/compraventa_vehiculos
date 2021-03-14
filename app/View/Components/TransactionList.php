@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class TransactionList extends Component
 {
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +14,7 @@ class TransactionList extends Component
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
