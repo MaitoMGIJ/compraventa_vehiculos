@@ -35,7 +35,7 @@
                             <label class="block font-medium text-sm text-gray-700">{{ __('tags.comment') }}</label>
                             <textarea name="comment" class="form-input w-full rounded-md shadow-sm" :value="old('comment')" rows="2"></textarea>
                             <label for="photo" class="block font-medium text-sm text-gray-700">{{ __('tags.upload_photo') }}</label>
-                            <input type="file" class="form-input w-full rounded-md shadow-sm" name="photo" required>
+                            <input type="file" class="form-input w-full rounded-md shadow-sm" name="photo" required accept="image/*">
                         </div>
                     </div>
                     <div class="md:col-span-1">

@@ -17,8 +17,10 @@ class VehicleController extends Controller
         return view('vehicles.index');
     }
 
-    public function show($id){
-        return Vehicle::find($id);
+    public function show(Vehicle $vehicle){
+        return view('vehicles.show', [
+            'vehicle' => $vehicle
+            ]);
     }
 
     public function create(){
@@ -33,12 +35,14 @@ class VehicleController extends Controller
     }
 
     public function store(Request $request){
-        DB::transaction(function () use($request){
+        $message = __('messages.vehicle.created.fail');
+        $error = true;
+        DB::transaction(function () use($request, &$message, &$error){
 
             $photo = $request->file('photo');
             $support = $request->file('support');
 
-            $vehicle_id = Vehicle::create([
+            $vehicle = Vehicle::create([
                 'license' => $request->license,
                 'type' => $request->vehicle_type,
                 'brand' => $request->brand,
@@ -47,10 +51,10 @@ class VehicleController extends Controller
                 'color' => $request->color,
                 'photo' => $photo->store('vehicles', 'public'),
                 'comment' => $request->comment
-            ])->id;
+            ]);
 
             Transaction::create([
-                'vehicle_id' => $vehicle_id,
+                'vehicle_id' => $vehicle->id,
                 'transaction_type' => $request->transaction_type,
                 'value' => $request->value,
                 'date' => $request->date,
@@ -59,7 +63,14 @@ class VehicleController extends Controller
                 'commission' => $request->commission,
                 'user_id' => Auth::user()->id
             ]);
+
+            $message = trans('messages.vehicle.created.done', ['license' => $vehicle->license]);
+            $error = false;
         });
-        return redirect()->route('vehicle.index');
+        return redirect()->route('vehicle.index')->with([
+            'error' => $error,
+            'message' => $message
+        ]);
     }
+
 }
