@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class transaction-card extends Component
+class TransactionCard extends Component
 {
     /**
      * Create a new component instance.

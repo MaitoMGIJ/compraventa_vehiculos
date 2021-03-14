@@ -18,7 +18,7 @@
                         <p>{{ __('tags.create') }}</p>
                     </a>
                 </div>
-                <x-list-vehicle/>
+                <x-vehicle-list/>
             </div>
         </div>
     </div>
