@@ -14,7 +14,7 @@
                 <x-vehicle-card :vehicle="$vehicle"/>
             </div>
             @if($vehicle->hasTransactions())
-                <x-transaction-list :transactions="$vehicle->getTransactions()"/>
+                @livewire('transaction-list', ['transactions' => $vehicle->getTransactions()])
             @endif
         </div>
     </div>
