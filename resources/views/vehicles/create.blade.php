@@ -62,8 +62,8 @@
                             </select>
                             <label class="block font-medium text-sm text-gray-700" for="commission">{{ __('tags.commission') }}</label>
                             <input type="number" name="commission" class="form-input w-full rounded-md shadow-sm" :value="old('commission')" required/>
-                            <div class="flex justify-end pt-20 pb-10">
-                                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">{{ __('tags.save') }}</button>
+                            <div class="flex justify-end pt-10 pb-3">
+                                <x-button-save/>
                             </div>
                         </div>
                     </div>

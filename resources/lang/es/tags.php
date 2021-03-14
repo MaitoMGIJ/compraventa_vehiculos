@@ -23,5 +23,7 @@ return [
     'upload_support' => 'Cargar Soporte',
     'agent' => 'Asesor',
     'commission' => 'Comisión',
-    'color' => 'Color'
+    'color' => 'Color',
+    'add' => 'Agregar',
+    'return' => 'Volver'
 ];

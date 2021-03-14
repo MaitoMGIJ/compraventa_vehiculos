@@ -23,6 +23,10 @@ class Vehicle extends Model
         return $this->belongsTo(VehicleType::class, 'type');
     }
 
+    public function transactions(){
+        return $this->hasMany(Transaction::class);
+    }
+
     public function getNameAttribute(){
         $reference = $this->reference()->get()->first()->description;
         $brand = $this->brand()->get()->first()->description;
@@ -31,5 +35,13 @@ class Vehicle extends Model
 
     public function getUrlAttribute(){
         return url("storage/{$this->photo}");
+    }
+
+    public function getTransactions(){
+        return $this->transactions()->get();
+    }
+
+    public function hasTransactions(){
+        return count($this->getTransactions()) > 0 ? true : false;
     }
 }
