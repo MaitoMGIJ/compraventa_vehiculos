@@ -18,6 +18,9 @@
                     <x-jet-nav-link href="{{ route('vehicle.index') }}" :active="request()->routeIs('vehicle')">
                         {{ trans_choice('tags.vehicle', 2) }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('transaction.create') }}" :active="request()->routeIs('transaction')">
+                        {{ trans_choice('tags.transaction', 2) }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
