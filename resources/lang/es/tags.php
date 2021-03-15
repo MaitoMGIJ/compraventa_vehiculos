@@ -25,5 +25,6 @@ return [
     'commission' => 'Comisión',
     'color' => 'Color',
     'add' => 'Agregar',
-    'return' => 'Volver'
+    'return' => 'Volver',
+    'expense' => 'Gasto|Gastos'
 ];
