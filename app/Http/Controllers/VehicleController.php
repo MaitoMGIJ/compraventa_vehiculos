@@ -10,6 +10,7 @@ use App\Models\Vehicle;
 use App\Models\VehicleType;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class VehicleController extends Controller
 {
@@ -43,14 +44,14 @@ class VehicleController extends Controller
             $support = $request->file('support');
 
             $vehicle = Vehicle::create([
-                'license' => $request->license,
+                'license' => Str::upper($request->license),
                 'type' => $request->vehicle_type,
                 'brand' => $request->brand,
                 'reference' => $request->reference,
                 'model' => $request->model,
-                'color' => $request->color,
+                'color' => Str::ucfirst($request->color),
                 'photo' => $photo->store('vehicles', 'public'),
-                'comment' => $request->comment
+                'comment' => Str::ucfirst($request->comment)
             ]);
 
             Transaction::create([

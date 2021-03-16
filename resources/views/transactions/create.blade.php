@@ -21,7 +21,8 @@
                     <div class="md:col-span-2">
                         @livewire('transaction-create-form', [
                             'transaction_types' => $transaction_types,
-                            'agents' => $agents
+                            'agents' => $agents,
+                            'expense' => $expense ?? null
                             ], key(time()))
                     </div>
                 </div>

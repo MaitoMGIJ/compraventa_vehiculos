@@ -13,6 +13,7 @@
     <input type="date" name="date" class="form-input w-full rounded-md shadow-sm" :value="old('date')" required/>
     <label for="support" class="block font-medium text-sm text-gray-700">{{ __('tags.upload_support') }}</label>
     <input type="file" class="form-input w-full rounded-md shadow-sm" name="support">
+    @if(!$expense)
     <label class="block font-medium text-sm text-gray-700" for="agent">{{ __('tags.agent') }}</label>
     <select name="agent" id="agent" class="bg-white text-gray-900 appearance-none border-none inline-block py-3 pl-3 pr-8 rounded leading-tight w-full">
         <option value="" class="pt-6">{{ __('tags.none') }}</option>
@@ -22,6 +23,7 @@
     </select>
     <label class="block font-medium text-sm text-gray-700" for="commission">{{ __('tags.commission') }}</label>
     <input type="number" name="commission" class="form-input w-full rounded-md shadow-sm" :value="old('commission')" value="0"/>
+    @endif
     <div class="flex justify-end pt-10">
         <x-button-save/>
     </div>

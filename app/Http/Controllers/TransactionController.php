@@ -31,7 +31,8 @@ class TransactionController extends Controller
             'transaction_types' => $transaction_types,
             'agents' => $agents,
             'vehicle' => $request->vehicle,
-            'is_active' => 'true'
+            'is_active' => 'true',
+            'expense' => true
         ]);
     }
 
@@ -53,7 +54,7 @@ class TransactionController extends Controller
                 'date' => $request->date,
                 'support' => is_null($support) ? null : $support->store('transactions', 'public'),
                 'agent_id' => $request->agent,
-                'commission' => $request->commission,
+                'commission' => is_null($request->commission) ? 0 : $request->commission,
                 'user_id' => Auth::user()->id
             ]);
 
