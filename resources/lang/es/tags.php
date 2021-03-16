@@ -26,5 +26,7 @@ return [
     'color' => 'Color',
     'add' => 'Agregar',
     'return' => 'Volver',
-    'expense' => 'Gasto|Gastos'
+    'expense' => 'Gasto|Gastos',
+    'search' => 'Buscar',
+    'end' => 'Salida'
 ];

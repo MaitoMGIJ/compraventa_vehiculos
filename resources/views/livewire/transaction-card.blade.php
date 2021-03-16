@@ -1,4 +1,4 @@
-<div class="grid grid-cols-3 bg-gray-50 shadow-xl rounded-lg overflow-hidden">
+<div class="grid md:grid-cols-3 sm:grid-cols-1 bg-gray-50 shadow-xl rounded-lg overflow-hidden">
     <div class="p-4 border-t border-gray-300 items-center text-center bg-gray-100">
         <p class="uppercase tracking-wide text-3xl font-bold text-gray-700">{{ $transaction->type }}</p>
     </div>

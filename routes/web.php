@@ -29,7 +29,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum'])->resource('vehicle', VehicleController::class);
-Route::middleware(['auth:sanctum'])->resource('transaction', TransactionController::class);
+Route::middleware(['auth:sanctum'])->resource('transaction', TransactionController::class)->only('create', 'store');
+Route::middleware(['auth:sanctum'])->get('transaction/end', [TransactionController::class, 'end'])->name('transaction.end');
 
 Route::post('brand/type', [FormController::class, 'brandType'])->name('brand.type');
 Route::post('reference/brand/type', [FormController::class, 'referenceBrand'])->name('reference.brand');

@@ -12,13 +12,26 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
+
+    public function end(Request $request){
+        $transaction_types = TransactionType::where('end', true)->where('is_active', true)->get();
+        $agents = Agent::where('is_active', true)->get();
+        return view('transactions.create', [
+            'transaction_types' => $transaction_types,
+            'agents' => $agents,
+            'vehicle' => $request->vehicle,
+            'is_active' => 'false'
+        ]);
+    }
+
     public function create(Request $request){
         $transaction_types = TransactionType::where('expense', true)->where('is_active', true)->get();
         $agents = Agent::where('is_active', true)->get();
         return view('transactions.create', [
             'transaction_types' => $transaction_types,
             'agents' => $agents,
-            'vehicle' => $request->vehicle
+            'vehicle' => $request->vehicle,
+            'is_active' => 'true'
         ]);
     }
 
@@ -28,6 +41,11 @@ class TransactionController extends Controller
 
         DB::transaction(function () use($request, &$message, &$error){
             $support = $request->file('support');
+            if(!is_null($request->is_active)){
+                Vehicle::where('id', $request->vehicle)->update([
+                    'is_active' => $request->is_active
+                ]);
+            }
             Transaction::create([
                 'vehicle_id' => $request->vehicle,
                 'transaction_type' => $request->transaction_type,

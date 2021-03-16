@@ -14,6 +14,7 @@
                             @livewire('select-list-vehicle')
                         @else
                             <input type="hidden" name="vehicle" value="{{ $vehicle }}"/>
+                            <input type="hidden" name="is_active" value="{{ $is_active }}"/>
                             @livewire('vehicle-info', ['vehicle_id' => $vehicle])
                         @endif
                     </div>

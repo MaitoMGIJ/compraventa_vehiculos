@@ -18,6 +18,17 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+        <script>
+            document.addEventListener('turbolinks:load', () => {
+                if (!window.livewire) {
+                  window.livewire = new Livewire()
+                  window.livewire.start()
+                } else {
+                  window.livewire.restart()
+                }
+              })
+        </script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
