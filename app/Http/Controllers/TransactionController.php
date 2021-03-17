@@ -78,9 +78,16 @@ class TransactionController extends Controller
             $error = false;
         });
 
-        return redirect()->route('vehicle.show', Vehicle::find($request->vehicle))->with([
-            'error' => $error,
-            'message' => $message
-        ]);
+        if($request->vehicle){
+            return redirect()->route('vehicle.show', Vehicle::find($request->vehicle))->with([
+                'error' => $error,
+                'message' => $message
+            ]);
+        }else{
+            return redirect()->route('transaction.income')->with([
+                'error' => $error,
+                'message' => $message
+            ]);
+        }
     }
 }

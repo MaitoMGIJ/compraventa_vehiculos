@@ -8,6 +8,7 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <x-message-card/>
+                <x-error-list/>
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                     <div class="md:col-span-1">
                         @if(!$income)

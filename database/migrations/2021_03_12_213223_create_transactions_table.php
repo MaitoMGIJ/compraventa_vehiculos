@@ -15,7 +15,7 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('vehicle_id');
+            $table->bigInteger('vehicle_id')->nullable();
             $table->bigInteger('transaction_type');
             $table->double('value');
             $table->date('date');
