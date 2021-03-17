@@ -35,4 +35,12 @@ class Transaction extends Model
         return is_null($this->agent_id) ? false : true;
     }
 
+    public function hasSupport(){
+        return is_null($this->support) ? false : true;
+    }
+
+    public function getUrlSupportAttribute(){
+        return url("storage/".$this->support);
+    }
+
 }
