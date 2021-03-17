@@ -12,17 +12,15 @@
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                     <div class="md:col-span-2 mt-5 md:mt-0">
                         @livewire('vehicle-create-form', [
-                            'vehicle_types' => $vehicle_types,
-                            'brands' => [],
-                            'vehicle_type_selected' => null
-                            ], key(time()))
+                            'vehicle_types' => $vehicle_types
+                            ], key('VCF'.time()))
                     </div>
                     <div class="md:col-span-1">
                         @livewire('transaction-create-form', [
                             'transaction_types' => $transaction_types,
                             'agents' => $agents,
                             'expense' => $expense ?? null
-                            ], key(time()))
+                            ], key('TCF'.time()))
                     </div>
                 </div>
             </div>

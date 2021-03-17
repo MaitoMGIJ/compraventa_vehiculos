@@ -22,7 +22,7 @@
         @endforeach
     </select>
     <label class="block font-medium text-sm text-gray-700" for="commission">{{ __('tags.commission') }}</label>
-    <input type="number" name="commission" class="form-input w-full rounded-md shadow-sm" :value="old('commission')" value="0"/>
+    <input type="number" name="commission" class="form-input w-full rounded-md shadow-sm" :value="old('commission')"/>
     @endif
     <div class="flex justify-end pt-10">
         <x-button-save/>

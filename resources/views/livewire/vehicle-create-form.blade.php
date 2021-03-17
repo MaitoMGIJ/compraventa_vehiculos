@@ -38,4 +38,3 @@
     <label for="photo" class="block font-medium text-sm text-gray-700">{{ __('tags.upload_photo') }}</label>
     <input type="file" class="form-input w-full rounded-md shadow-sm" name="photo" required accept="image/*">
 </div>
-<script>
