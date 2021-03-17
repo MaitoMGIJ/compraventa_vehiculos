@@ -41,12 +41,6 @@
 
 </div>
 <div class="p-6 sm:px-20 bg-white border-b border-gray-200 justify-center ">
-    <div class="mt-8 text-md text-center w-full">
-        Una aplicación creada por la empresa del pollo
-    </div>
-
-    <div class="mt-4 flex flex-col">
-        <x-jet-application-logo class="block h-12 w-auto" />
-    </div>
+    <livewire:company-card-logo />
 
 </div>
