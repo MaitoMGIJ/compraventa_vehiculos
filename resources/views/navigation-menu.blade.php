@@ -148,7 +148,16 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('tags.home') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('vehicle.index') }}" :active="request()->routeIs('vehicle.index')">
+                {{ trans_choice('tags.vehicle', 2) }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('transaction.create') }}" :active="request()->routeIs('transaction.create')">
+                {{ trans_choice('tags.expense', 2) }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('transaction.income') }}" :active="request()->routeIs('transaction.income')">
+                {{ __('tags.cash_register') }}
             </x-jet-responsive-nav-link>
         </div>
 
@@ -186,7 +195,7 @@
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                        {{ __('auth.logout') }}
                     </x-jet-responsive-nav-link>
                 </form>
 

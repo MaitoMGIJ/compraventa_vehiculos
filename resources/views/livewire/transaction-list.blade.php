@@ -1,8 +1,8 @@
 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg item-center border-t border-gray-200">
     <div class="flex flex-row w-full items-center">
-        <div class="flex-grow text-4xl font-bold text-black uppercase text-center">{{ trans_choice('tags.transaction', 2) }}</div>
+        <div class="flex-grow md:text-4xl text-xl font-bold text-black uppercase text-center">{{ trans_choice('tags.transaction', 2) }}</div>
         @if($vehicle->is_active)
-        <div class="flex justify-end text-center items-center">
+        <div class="sm:pl-2 flex justify-end text-center items-center">
             <a href="{{ route('transaction.end', ['vehicle' => $vehicle->id ?? '']) }}" class="p-2 h-full flex-grow items-center text-center bg-yellow-600 hover:bg-yellow-700 rounded-md text-white font-bold">
                 <x-heroicon-o-currency-dollar class="w-10 h-full text-center items-center"/>
                 <p>{{  __('tags.end')  }}</p>
