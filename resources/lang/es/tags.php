@@ -27,6 +27,8 @@ return [
     'add' => 'Agregar',
     'return' => 'Volver',
     'expense' => 'Gasto|Gastos',
+    'income' => 'Ingreso|Ingresos',
     'search' => 'Buscar',
-    'end' => 'Salida'
+    'end' => 'Salida',
+    'report' => 'Reporte|Reportes'
 ];

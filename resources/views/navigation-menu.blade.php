@@ -15,11 +15,14 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('tags.home') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('vehicle.index') }}" :active="request()->routeIs('vehicle')">
+                    <x-jet-nav-link href="{{ route('vehicle.index') }}" :active="request()->routeIs('vehicle.index')">
                         {{ trans_choice('tags.vehicle', 2) }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('transaction.create') }}" :active="request()->routeIs('transaction')">
+                    <x-jet-nav-link href="{{ route('transaction.create') }}" :active="request()->routeIs('transaction.create')">
                         {{ trans_choice('tags.expense', 2) }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('transaction.income') }}" :active="request()->routeIs('transaction.income')">
+                        {{ __('tags.cash_register') }}
                     </x-jet-nav-link>
                 </div>
             </div>

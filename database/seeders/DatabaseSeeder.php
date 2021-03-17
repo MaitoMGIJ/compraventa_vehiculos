@@ -122,6 +122,46 @@ class DatabaseSeeder extends Seeder
             'income'=> false
         ]);
 
+        TransactionType::create([
+            'description' => 'LAVADA',
+            'entry' => false,
+            'end' => false,
+            'expense' => true,
+            'income'=> false
+        ]);
+
+        TransactionType::create([
+            'description' => 'CALCOMANIAS',
+            'entry' => false,
+            'end' => false,
+            'expense' => true,
+            'income'=> false
+        ]);
+
+        TransactionType::create([
+            'description' => 'MECANICA',
+            'entry' => false,
+            'end' => false,
+            'expense' => true,
+            'income'=> false
+        ]);
+
+        TransactionType::create([
+            'description' => 'LIBERACIÓN',
+            'entry' => false,
+            'end' => true,
+            'expense' => false,
+            'income'=> false
+        ]);
+
+        TransactionType::create([
+            'description' => 'DEPOSITO EN EFECTIVO',
+            'entry' => false,
+            'end' => false,
+            'expense' => false,
+            'income'=> true
+        ]);
+
         //Agents
         Agent::factory(5)->create();
 

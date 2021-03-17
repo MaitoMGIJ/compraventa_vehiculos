@@ -20,7 +20,9 @@ class TransactionController extends Controller
             'transaction_types' => $transaction_types,
             'agents' => $agents,
             'vehicle' => $request->vehicle,
-            'is_active' => 'false'
+            'is_active' => 'false',
+            'expense' => false,
+            'income' => false
         ]);
     }
 
@@ -32,7 +34,21 @@ class TransactionController extends Controller
             'agents' => $agents,
             'vehicle' => $request->vehicle,
             'is_active' => 'true',
-            'expense' => true
+            'expense' => true,
+            'income' => false
+        ]);
+    }
+
+    public function income(Request $request){
+        $transaction_types = TransactionType::where('income', true)->where('is_active', true)->get();
+        $agents = Agent::where('is_active', true)->get();
+        return view('transactions.create', [
+            'transaction_types' => $transaction_types,
+            'agents' => $agents,
+            'vehicle' => $request->vehicle,
+            'is_active' => 'true',
+            'expense' => false,
+            'income' => true
         ]);
     }
 
