@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\VehicleRequest;
 use App\Models\Agent;
 use App\Models\Transaction;
 use App\Models\TransactionType;
@@ -14,6 +15,7 @@ use Illuminate\Support\Str;
 
 class VehicleController extends Controller
 {
+
     public function index(){
         return view('vehicles.index');
     }
@@ -35,7 +37,7 @@ class VehicleController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function store(VehicleRequest $request){
         $message = __('messages.vehicle.created.fail');
         $error = true;
         DB::transaction(function () use($request, &$message, &$error){

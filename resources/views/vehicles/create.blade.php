@@ -7,6 +7,8 @@
     <form action="{{ route('vehicle.store') }}" enctype="multipart/form-data" method="post">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <x-message-card/>
+                <x-error-list/>
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                     <div class="md:col-span-2 mt-5 md:mt-0">
                         <div class="shadow bg-gray-400 md:rounded-md p-4">
