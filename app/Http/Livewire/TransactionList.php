@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Vehicle;
 use Livewire\Component;
 
 class TransactionList extends Component
@@ -9,7 +10,7 @@ class TransactionList extends Component
     public $transactions;
     public $vehicle;
 
-    public function mount($transactions, $vehicle = ''){
+    public function mount($transactions, $vehicle = []){
         $this->transactions = $transactions;
         $this->vehicle = $vehicle;
     }
