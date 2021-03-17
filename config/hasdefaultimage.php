@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'default' => 'https://media.istockphoto.com/photos/black-sport-motorcycle-picture-id452986791?s=612x612'
+    'default' => 'https://www.freevector.com/uploads/vector/preview/371/FreeVector-Motorbike-Vector.jpg'
 ];
