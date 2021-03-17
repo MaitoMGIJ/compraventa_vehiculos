@@ -11,6 +11,8 @@
                 <x-error-list/>
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                     <div class="md:col-span-1">
+                        <input type="hidden" name="expense" value="{{ $expense ?? null }}"/>
+                        <input type="hidden" name="income" value="{{ $income ?? null }}"/>
                         @if(!$income)
                             @if(!isset($vehicle) && empty($vehicle))
                                 @livewire('select-list-vehicle')

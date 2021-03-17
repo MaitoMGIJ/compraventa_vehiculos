@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TransactionRequest;
 use App\Models\Transaction;
 use App\Models\TransactionType;
 use App\Models\Agent;
@@ -52,7 +53,7 @@ class TransactionController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function store(TransactionRequest $request){
         $message = __('messages.transaction.created.fail');
         $error = true;
 
