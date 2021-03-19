@@ -50,4 +50,5 @@ class Vehicle extends Model
     public function hasTransactions(){
         return count($this->getTransactions()) > 0 ? true : false;
     }
+
 }

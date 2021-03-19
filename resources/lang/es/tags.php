@@ -20,6 +20,8 @@ return [
     'transaction_type' => 'Tipo de Transacción',
     'value' => 'Valor',
     'date' => 'Fecha',
+    'date_start' => 'Fecha Inicial',
+    'date_end' => 'Fecha Final',
     'upload_support' => 'Cargar Soporte',
     'agent' => 'Asesor',
     'commission' => 'Comisión',

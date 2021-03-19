@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,9 @@ Route::middleware(['auth:sanctum'])->resource('vehicle', VehicleController::clas
 Route::middleware(['auth:sanctum'])->resource('transaction', TransactionController::class)->only('create', 'store');
 Route::middleware(['auth:sanctum'])->get('transaction/end', [TransactionController::class, 'end'])->name('transaction.end');
 Route::middleware(['auth:sanctum'])->get('transaction/income', [TransactionController::class, 'income'])->name('transaction.income');
+
+Route::middleware(['auth:sanctum'])->get('reports', [ReportController::class, 'index'])->name('reports.index');
+Route::middleware(['auth:sanctum'])->post('reports/transactions', [ReportController::class, 'transactions'])->name('reports.transactions');
 
 Route::post('brand/type', [FormController::class, 'brandType'])->name('brand.type');
 Route::post('reference/brand/type', [FormController::class, 'referenceBrand'])->name('reference.brand');

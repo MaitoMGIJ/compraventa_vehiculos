@@ -27,6 +27,10 @@ class Transaction extends Model
         return $this->type()->get()->first()->description;
     }
 
+    public function getTypeIdAttribute(){
+        return $this->type()->get()->first()->id;
+    }
+
     public function getAgentAttribute(){
         return $this->agent()->get()->first()->name;
     }
@@ -41,6 +45,15 @@ class Transaction extends Model
 
     public function getUrlSupportAttribute(){
         return url("storage/".$this->support);
+    }
+
+    public function scopeBetween($query, $start, $end){
+        return $query->whereBetween('date', [$start, $end]);
+    }
+
+    public function getEntryTransactionCode(){
+        dd($this->type(), $this->type()->where('entry', true)->toSql());
+        return $this->type()->where('entry', true)->get('id')->first();
     }
 
 }

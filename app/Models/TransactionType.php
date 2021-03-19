@@ -14,4 +14,20 @@ class TransactionType extends Model
     public function transactions(){
         return $this->hasMany(Transaction::class);
     }
+
+    public function scopeEntry($query){
+        return $query->where('entry', true);
+    }
+
+    public function scopeEnd($query){
+        return $query->where('end', true);
+    }
+
+    public function scopeExpense($query){
+        return $query->where('expense', true);
+    }
+
+    public function scopeIncome($query){
+        return $query->where('income', true);
+    }
 }

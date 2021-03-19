@@ -24,6 +24,9 @@
                     <x-jet-nav-link href="{{ route('transaction.income') }}" :active="request()->routeIs('transaction.income')">
                         {{ __('tags.cash_register') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('reports.index') }}" :active="request()->routeIs('reports.index')">
+                        {{ trans_choice('tags.report', 2) }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -158,6 +161,9 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('transaction.income') }}" :active="request()->routeIs('transaction.income')">
                 {{ __('tags.cash_register') }}
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('reports.index') }}" :active="request()->routeIs('transaction.income')">
+                {{ trans_choice('tags.report', 2) }}
             </x-jet-responsive-nav-link>
         </div>
 
