@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
+use App\Exports\TransactionsExport;
 use App\Models\Transaction;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransactionsTable extends Component
 {
@@ -33,5 +35,12 @@ class TransactionsTable extends Component
         return response()->streamDownload(function() use($transactions){
             echo $transactions->toCsv(config('exports.transactions.csv'));
         }, trans_choice('tags.transaction', 2).time().'.csv');
+    }
+
+    public function exportXLS(){
+        return Excel::download(
+            new TransactionsExport($this->initialDate, $this->endDate, config('exports.transactions.xls')),
+                trans_choice('tags.transaction', 2).time().'.xlsx'
+            );
     }
 }

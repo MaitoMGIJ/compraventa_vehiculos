@@ -10,6 +10,12 @@
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="flex justify-end">
+                <button
+                wire:click="exportXLS"
+                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
+                <x-heroicon-o-document-download class="w-10 h-10 text-center items-center"/>
+                <p>{{ __('tags.download_xls') }}</p>
+            </button>
             <button
                 wire:click="exportCSV"
                 class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
