@@ -8,18 +8,20 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 
-class TransactionsExport implements FromCollection, WithHeadings, ShouldAutoSize
+class CommissionsExport implements FromCollection, WithHeadings, ShouldAutoSize
 {
     use Exportable;
 
     public $initialDate;
     public $endDate;
+    public $agentId;
     public $columns;
 
-    public function __construct($initialDate, $endDate, $columns){
+    public function __construct($initialDate, $endDate, $agentId, $columns){
         $this->initialDate = $initialDate;
         $this->endDate = $endDate;
         $this->columns = $columns;
+        $this->agentId = $agentId;
     }
 
     /**
@@ -27,7 +29,8 @@ class TransactionsExport implements FromCollection, WithHeadings, ShouldAutoSize
     */
     public function collection()
     {
-        $transactions = Transaction::between($this->initialDate, $this->endDate)
+        $transactions = Transaction::where('agent_id', $this->agentId)
+            ->between($this->initialDate, $this->endDate)
             ->leftJoin('transaction_types', 'transaction_types.id', '=', 'transactions.transaction_type')
             ->leftJoin('vehicles', 'vehicles.id', '=', 'transactions.vehicle_id')
             ->leftJoin('vehicle_brands', 'vehicle_brands.id', '=', 'vehicles.brand')
