@@ -29,4 +29,28 @@ class ReportController extends Controller
             'endDate' => $request->date_end
         ]);
     }
+
+    public function activeVehicles(Request $request){
+        return view('reports.vehicles.list', [
+            'initialDate' => $request->date_start,
+            'endDate' => $request->date_end,
+            'is_active' => 'true'
+        ]);
+    }
+
+    public function inactiveVehicles(Request $request){
+        return view('reports.vehicles.list', [
+            'initialDate' => $request->date_start,
+            'endDate' => $request->date_end,
+            'is_active' => 'false'
+        ]);
+    }
+
+    public function vehicles(Request $request){
+        return view('reports.vehicles.list', [
+            'initialDate' => $request->date_start,
+            'endDate' => $request->date_end,
+            'is_active' => ''
+        ]);
+    }
 }

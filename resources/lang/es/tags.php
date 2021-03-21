@@ -23,6 +23,8 @@ return [
     'date' => 'Fecha',
     'date_start' => 'Fecha Inicial',
     'date_end' => 'Fecha Final',
+    'start_date' => 'Fecha de Entrada',
+    'end_date' => 'Fecha de Salida',
     'upload_support' => 'Cargar Soporte',
     'agent' => 'Asesor',
     'commission' => 'Comisión',
@@ -35,5 +37,15 @@ return [
     'end' => 'Salida',
     'report' => 'Reporte|Reportes',
     'download_csv' => 'Descargar CSV',
-    'download_xls' => 'Descargar XLS'
+    'download_xls' => 'Descargar XLS',
+    'status' => 'Estado',
+    'purchase_value' => 'Valor de Compra',
+    'expense_value' => 'Valor de Gastos',
+    'sell_value' => 'Valor de Venta',
+    'active' => 'Activo',
+    'inactive' => 'Inactivo',
+    'earnings' => 'Ganancias',
+    'entry' => 'Entrada|Entradas',
+    'end' => 'Salida|Salidas',
+    'history' => 'Historico'
 ];

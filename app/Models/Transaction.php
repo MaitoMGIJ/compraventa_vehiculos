@@ -59,9 +59,4 @@ class Transaction extends Model
         return $query->whereBetween('date', [$start, $end]);
     }
 
-    public function getEntryTransactionCode(){
-        dd($this->type(), $this->type()->where('entry', true)->toSql());
-        return $this->type()->where('entry', true)->get('id')->first();
-    }
-
 }
