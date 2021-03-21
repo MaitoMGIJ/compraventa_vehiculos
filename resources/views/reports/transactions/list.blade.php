@@ -4,8 +4,12 @@
             {{ trans_choice('tags.report', 1) }} {{ trans_choice('tags.transaction', 2) }}
         </h2>
     </x-slot>
-
-        @livewire('table-transactions', [
-            'transactions' => $transactions
-        ], key('T'.time()))
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @livewire('transactions-table', [
+                'initialDate' => $initialDate,
+                'endDate' => $endDate
+            ], key('T'.time()))
+        </div>
+    </div>
 </x-app-layout>

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'id' => 'ID',
     'vehicle' => 'Vehiculo|Vehiculos',
     'transaction' => 'Transacción|Transacciones',
     'cash_register' => 'Registros de Caja',
@@ -32,5 +33,7 @@ return [
     'income' => 'Ingreso|Ingresos',
     'search' => 'Buscar',
     'end' => 'Salida',
-    'report' => 'Reporte|Reportes'
+    'report' => 'Reporte|Reportes',
+    'download_csv' => 'Descargar CSV',
+    'download_xls' => 'Descargar XLS'
 ];
