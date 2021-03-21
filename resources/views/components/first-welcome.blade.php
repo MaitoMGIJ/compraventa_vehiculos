@@ -1,7 +1,5 @@
-<div class="grid grid-cols-2 p-6 sm:px-20 bg-white border-b border-gray-200">
-    <div>
-        <livewire:application-card-logo class="block h-12 w-auto" />
-    </div>
+<div class="grid grid-cols-1 w-full p-6 sm:px-20 bg-white border-b border-gray-200 justify-items-center">
+        <livewire:application-card-logo class="object-cover"/>
 
     <div class="mt-8 text-2xl text-center">
         Bienvenid@!

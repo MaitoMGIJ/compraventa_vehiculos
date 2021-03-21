@@ -1,3 +1,1 @@
-<div>
-    {{-- Care about people's approval and you will be their prisoner. --}}
-</div>
+<img class="w-10 h-10" src="{{ url('storage/images/card-logo.png') }}">

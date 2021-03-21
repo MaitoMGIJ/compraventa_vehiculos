@@ -1,7 +1,9 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <livewire:application-card-logo class="flex flex-grow w-full"/>
+            <div class="h-48 max-w-md max-h-48 object-fill object-center justify-items-center items-center pb-0">
+            <livewire:application-card-logo/>
+            </div>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

@@ -1,1 +1,1 @@
-<img class="w-10 h-10" src="{{ url('storage/images/card-logo.png') }}">
+<img class="w-full object-cover" src="{{ url('storage/images/banner.png') }}">

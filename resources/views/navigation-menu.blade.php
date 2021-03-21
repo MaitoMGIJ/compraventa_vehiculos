@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <livewire:application-mark class="block h-9 w-auto" />
+                        <livewire:application-logo class="block h-9 w-auto" />
                     </a>
                 </div>
 
