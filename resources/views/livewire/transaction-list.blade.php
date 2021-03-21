@@ -5,7 +5,7 @@
         <div class="sm:pl-2 flex justify-end text-center items-center">
             <a href="{{ route('transaction.end', ['vehicle' => $vehicle->id ?? '']) }}" class="p-2 h-full flex-grow items-center text-center bg-yellow-600 hover:bg-yellow-700 rounded-md text-white font-bold">
                 <x-heroicon-o-currency-dollar class="w-10 h-full text-center items-center"/>
-                <p>{{  __('tags.end')  }}</p>
+                <p>{{  trans_choice('tags.end', 1)  }}</p>
             </a>
             <a href="{{ route('transaction.create', ['vehicle' => $vehicle->id ?? '']) }}" class="p-2 h-full items-center text-center bg-green-600 hover:bg-green-700 rounded-md text-white font-bold">
                 <x-heroicon-o-plus-circle class="w-10 h-10 text-center items-center"/>

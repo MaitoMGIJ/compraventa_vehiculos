@@ -34,7 +34,6 @@ return [
     'expense' => 'Gasto|Gastos',
     'income' => 'Ingreso|Ingresos',
     'search' => 'Buscar',
-    'end' => 'Salida',
     'report' => 'Reporte|Reportes',
     'download_csv' => 'Descargar CSV',
     'download_xls' => 'Descargar XLS',
