@@ -39,6 +39,7 @@ Route::middleware(['auth:sanctum'])->post('reports/transactions', [ReportControl
 Route::middleware(['auth:sanctum'])->post('reports/vehicles/active', [ReportController::class, 'activeVehicles'])->name('reports.vehicles.active');
 Route::middleware(['auth:sanctum'])->post('reports/vehicles/inactive', [ReportController::class, 'inactiveVehicles'])->name('reports.vehicles.inactive');
 Route::middleware(['auth:sanctum'])->post('reports/vehicles', [ReportController::class, 'vehicles'])->name('reports.vehicles');
+Route::middleware(['auth:sanctum'])->post('reports/commissions', [ReportController::class, 'commissions'])->name('reports.commissions');
 
 Route::post('brand/type', [FormController::class, 'brandType'])->name('brand.type');
 Route::post('reference/brand/type', [FormController::class, 'referenceBrand'])->name('reference.brand');

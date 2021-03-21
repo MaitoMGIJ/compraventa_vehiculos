@@ -53,4 +53,12 @@ class ReportController extends Controller
             'is_active' => ''
         ]);
     }
+
+    public function commissions(Request $request){
+        return view('reports.commission.list', [
+            'initialDate' => $request->date_start,
+            'endDate' => $request->date_end,
+            'agentId' => $request->agentId
+        ]);
+    }
 }
