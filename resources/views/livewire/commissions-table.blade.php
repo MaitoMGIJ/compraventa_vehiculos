@@ -99,8 +99,31 @@
                         </tr>
                         @endforeach
                     </tbody>
+                    <tfoot class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('tags.commission') }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xl font-bold text-black uppercase tracking-wider">
+                                ${{ number_format($transactions->pluck('commission')->sum()) }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            </th>
+                        </tr>
+                    </tfoot>
                 </table>
-                {{ $transactions->links() }}
             </div>
         </div>
     </div>

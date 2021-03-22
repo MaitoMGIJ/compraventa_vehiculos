@@ -20,7 +20,7 @@ class CommissionsTable extends Component
     {
         $transactions = Transaction::where('agent_id', $this->agentId)
             ->between($this->initialDate, $this->endDate)
-            ->paginate(10);
+            ->get();
         return view('livewire.commissions-table', [
             'transactions' => $transactions
         ]);
