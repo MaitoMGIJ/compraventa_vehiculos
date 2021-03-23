@@ -26,7 +26,7 @@ class VehiclesTable extends Component
         }else if($this->is_active == 'false'){
             $vehicles = Vehicle::where('vehicles.is_active', false)
                 ->endBetween($this->initialDate, $this->endDate)
-                ->paginate(8);
+                ->get();
         }
 
         return view('livewire.vehicles-table', [
