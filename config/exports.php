@@ -52,5 +52,110 @@ return [
             'agent' => 'agents.name',
             'commission' => 'transactions.commission'
         ],
+    ],
+    'vehicles' => [
+        'end' => [
+            'csv' => [
+                'license' => 'vehicles.license',
+                'brand' => 'vehicles.brand',
+                'reference' => 'vehicles.reference',
+                'model' => 'vehicles.model',
+                'start_date' => 'entry_date',
+                'entry_value' => 'entry_value',
+                'entry_commission' => 'entry_commission',
+                'entry_agent' => 'entry_agent',
+                'expense_value' => 'expenses',
+                'end_date' => 'end_date',
+                'end_value' => 'end_value',
+                'end_commission' => 'end_commission',
+                'end_agent' => 'end_agent',
+                'earnings' => 'earnings'
+            ],
+            'xls' => [
+                'license' => 'vehicles.license',
+                'brand' => 'vehicles.brand',
+                'reference' => 'vehicles.reference',
+                'model' => 'vehicles.model',
+                'start_date' => 'entry_date',
+                'entry_value' => 'entry_value',
+                'entry_commission' => 'entry_commission',
+                'entry_agent' => 'entry_agent',
+                'expense_value' => 'expenses',
+                'end_date' => 'end_date',
+                'end_value' => 'end_value',
+                'end_commission' => 'end_commission',
+                'end_agent' => 'end_agent',
+                'earnings' => 'earnings'
+            ]
+        ],
+        'entry' => [
+            'csv' => [
+                'license' => 'vehicles.license',
+                'brand' => 'vehicles.brand',
+                'reference' => 'vehicles.reference',
+                'model' => 'vehicles.model',
+                'start_date' => 'entry_date',
+                'entry_value' => 'entry_value',
+                'entry_commission' => 'entry_commission',
+                'entry_agent' => 'entry_agent',
+                'expense_value' => 'expenses',
+                'end_date' => 'end_date',
+                'end_value' => 'end_value',
+                'end_commission' => 'end_commission',
+                'end_agent' => 'end_agent',
+                'earnings' => 'earnings'
+            ],
+            'xls' => [
+                'license' => 'vehicles.license',
+                'brand' => 'vehicles.brand',
+                'reference' => 'vehicles.reference',
+                'model' => 'vehicles.model',
+                'start_date' => 'entry_date',
+                'entry_value' => 'entry_value',
+                'entry_commission' => 'entry_commission',
+                'entry_agent' => 'entry_agent',
+                'expense_value' => 'expenses',
+                'end_date' => 'end_date',
+                'end_value' => 'end_value',
+                'end_commission' => 'end_commission',
+                'end_agent' => 'end_agent',
+                'earnings' => 'earnings'
+            ]
+        ],
+        'all' => [
+            'csv' => [
+                'license' => 'vehicles.license',
+                'brand' => 'vehicles.brand',
+                'reference' => 'vehicles.reference',
+                'model' => 'vehicles.model',
+                'start_date' => 'entry_date',
+                'entry_value' => 'entry_value',
+                'entry_commission' => 'entry_commission',
+                'entry_agent' => 'entry_agent',
+                'expense_value' => 'expenses',
+                'end_date' => 'end_date',
+                'end_value' => 'end_value',
+                'end_commission' => 'end_commission',
+                'end_agent' => 'end_agent',
+                'earnings' => 'earnings'
+            ],
+            'xls' => [
+                'license' => 'vehicles.license',
+                'brand' => 'vehicles.brand',
+                'reference' => 'vehicles.reference',
+                'model' => 'vehicles.model',
+                'start_date' => 'entry_date',
+                'entry_value' => 'entry_value',
+                'entry_commission' => 'entry_commission',
+                'entry_agent' => 'entry_agent',
+                'expense_value' => 'expenses',
+                'end_date' => 'end_date',
+                'end_value' => 'end_value',
+                'end_commission' => 'end_commission',
+                'end_agent' => 'end_agent',
+                'earnings' => 'earnings'
+            ]
+        ]
+
     ]
 ];

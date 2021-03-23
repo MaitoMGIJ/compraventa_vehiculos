@@ -215,7 +215,7 @@
                         </tr>
                     </thead>
                 </table>
-                @isset($vehicles->links)
+                @if($vehicles instanceof Illuminate\Pagination\Paginator || $vehicles instanceof Illuminate\Pagination\LengthAwarePaginator)
                 {{ $vehicles->links() }}
                 @endisset
             </div>
