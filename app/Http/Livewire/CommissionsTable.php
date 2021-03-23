@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Exports\CommissionsExport;
+use App\Models\Agent;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,11 +20,29 @@ class CommissionsTable extends Component
 
     public function render()
     {
-        $transactions = Transaction::where('agent_id', $this->agentId)
-            ->between($this->initialDate, $this->endDate)
-            ->get();
+        $transactions = null;
+        $agents = null;
+        $initialDate = is_null($this->initialDate) ? '1900-01-01' : $this->initialDate;
+        $endDate = is_null($this->endDate) ? '3000-01-01' : $this->endDate;
+        if($this->agentId){
+            $transactions = Transaction::where('agent_id', $this->agentId)
+                ->between($initialDate, $endDate)
+                ->get();
+        }else{
+            $agents = Agent::join('transactions', 'transactions.agent_id', '=', 'agents.id')
+                ->whereBetween('transactions.date', [$initialDate, $endDate])
+                ->groupBy('agents.id')
+                ->select('agents.name', DB::raw('SUM(transactions.commission) as commissions'))
+                ->get();
+            $agents->map(function($agent){
+                $agent->initialDate = is_null($this->initialDate) ? Transaction::min('date') : $this->initialDate;
+                $agent->endDate = is_null($this->endDate) ? Transaction::max('date') : $this->endDate;
+                return $agent;
+            });
+        }
         return view('livewire.commissions-table', [
-            'transactions' => $transactions
+            'transactions' => $transactions,
+            'agents' => $agents
         ]);
     }
 

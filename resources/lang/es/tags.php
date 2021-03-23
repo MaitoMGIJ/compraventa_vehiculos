@@ -39,6 +39,7 @@ return [
     'income' => 'Ingreso|Ingresos',
     'search' => 'Buscar',
     'report' => 'Reporte|Reportes',
+    'download' => 'Descargar',
     'download_csv' => 'Descargar CSV',
     'download_xls' => 'Descargar XLS',
     'status' => 'Estado',

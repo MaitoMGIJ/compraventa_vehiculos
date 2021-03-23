@@ -9,21 +9,18 @@
 <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            @if(!is_null($transactions))
             <div class="flex justify-end">
                 <button
                 wire:click="exportXLS"
                 class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
                 <x-heroicon-o-document-download class="w-10 h-10 text-center items-center"/>
-                <p>{{ __('tags.download_xls') }}</p>
-            </button>
-            <button
-                wire:click="exportCSV"
-                class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
-                <x-heroicon-o-document-download class="w-10 h-10 text-center items-center"/>
-                <p>{{ __('tags.download_csv') }}</p>
+                <p>{{ __('tags.download') }}</p>
             </button>
             </div>
+            @endif
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                @if(!is_null($transactions))
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
@@ -119,11 +116,71 @@
                                 ${{ number_format($transactions->pluck('commission')->sum()) }}
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="px-6 py-3 text-center text-2xl font-bold text-gray-500 uppercase tracking-wider">
                             </th>
                         </tr>
                     </tfoot>
                 </table>
+                @endif
+                @if(!is_null($agents))
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('tags.date_start') }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('tags.date_end') }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('tags.agent') }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('tags.commission') }}
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+						@foreach($agents as $agent)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                                {{ $agent->initialDate }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-600">
+                                {{ $agent->endDate }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                                {{ $agent->name }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-600">
+                                ${{ number_format($agent->commissions) }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-2xl font-bold text-black uppercase tracking-wider">
+                                ${{ number_format($agents->sum('commissions')) }}
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+                @endif
             </div>
         </div>
     </div>
