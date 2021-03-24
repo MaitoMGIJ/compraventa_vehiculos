@@ -50,5 +50,11 @@ return [
             'fail' => 'Ha fallado la actualización del rol',
             'done' => 'Se ha actualizado el rol correctamente'
         ]
+    ],
+    'expense' => [
+        'created' => [
+            'fail' => 'Ha fallado la creación del gasto',
+            'done' => 'Se ha creado el gasto correctamente'
+        ]
     ]
 ];

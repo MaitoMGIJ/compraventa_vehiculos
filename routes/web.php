@@ -39,6 +39,9 @@ Route::middleware(['auth:sanctum'])->resource('users', UserController::class);
 Route::middleware(['auth:sanctum'])->resource('roles', RoleController::class);
 Route::middleware(['auth:sanctum'])->resource('agents', AgentController::class);
 Route::middleware(['auth:sanctum'])->get('admin', [AdminController::class, 'index'])->name('admin.index');
+Route::middleware(['auth:sanctum'])->get('admin/expense', [AdminController::class, 'expense'])->name('admin.expense.list');
+Route::middleware(['auth:sanctum'])->get('admin/expense/create', [AdminController::class, 'createExpense'])->name('admin.expense.create');
+Route::middleware(['auth:sanctum'])->post('admin/expense/store', [AdminController::class, 'storeExpense'])->name('admin.expense.store');
 Route::middleware(['auth:sanctum'])->get('transaction/end', [TransactionController::class, 'end'])->name('transaction.end');
 Route::middleware(['auth:sanctum'])->get('transaction/income', [TransactionController::class, 'income'])->name('transaction.income');
 
