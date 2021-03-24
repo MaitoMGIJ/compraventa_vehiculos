@@ -3,7 +3,9 @@
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum'])->resource('vehicle', VehicleController::class);
 Route::middleware(['auth:sanctum'])->resource('transaction', TransactionController::class)->only('create', 'store');
+Route::middleware(['auth:sanctum'])->resource('users', UserController::class);
+Route::middleware(['auth:sanctum'])->resource('roles', RoleController::class);
 Route::middleware(['auth:sanctum'])->get('transaction/end', [TransactionController::class, 'end'])->name('transaction.end');
 Route::middleware(['auth:sanctum'])->get('transaction/income', [TransactionController::class, 'income'])->name('transaction.income');
 

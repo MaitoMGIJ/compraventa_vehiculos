@@ -17,11 +17,13 @@
             @if($vehicle->hasTransactions())
                 @livewire('transaction-list', ['transactions' => $vehicle->getTransactions(), 'vehicle' => $vehicle])
             @endif
+            @can('earnings-show')
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @livewire('earnings-card', [
                     'earnings' => $vehicle->earnings
                 ])
             </div>
+            @endcan
         </div>
     </div>
 </x-app-layout>

@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
+    public function __construct(){
+        $this->middleware('role:Admin|Registro');
+    }
 
     public function end(Request $request){
         $transaction_types = TransactionType::where('end', true)->where('is_active', true)->get();

@@ -10,12 +10,14 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-message-card/>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                @can('vehicle-create')
                 <div class="flex justify-end pb-5">
                     <a href="{{ route('vehicle.create') }}" class="bg-green-600 hover:bg-green-700 rounded-md text-white py-2 px-4 font-bold">
                         <x-heroicon-o-plus-circle class="w-10 h-10"/>
                         <p>{{ __('tags.create') }}</p>
                     </a>
                 </div>
+                @endcan
                 @livewire('vehicle-list')
             </div>
         </div>

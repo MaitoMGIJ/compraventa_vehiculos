@@ -34,6 +34,7 @@ return [
     'end_commission' => 'Comisión de Salida',
     'color' => 'Color',
     'add' => 'Agregar',
+    'cancel' => 'Cancelar',
     'return' => 'Volver',
     'expense' => 'Gasto|Gastos',
     'income' => 'Ingreso|Ingresos',
@@ -55,5 +56,11 @@ return [
     'end' => 'Salida|Salidas',
     'history' => 'Historico',
     'top' => 'Top',
-    'unsold' => 'Sin Vender'
+    'unsold' => 'Sin Vender',
+    'email' => 'Email',
+    'name' => 'Nombre',
+    'password' => 'Contraseña',
+    'confirm-password' => 'Confirmar Contraseña',
+    'role' => 'Rol|Roles',
+    'username' => 'Nombre de Usuario'
 ];

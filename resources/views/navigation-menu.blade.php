@@ -18,12 +18,14 @@
                     <x-jet-nav-link href="{{ route('vehicle.index') }}" :active="request()->routeIs('vehicle.index')">
                         {{ trans_choice('tags.vehicle', 2) }}
                     </x-jet-nav-link>
+                    @can('transaction-create')
                     <x-jet-nav-link href="{{ route('transaction.create') }}" :active="request()->routeIs('transaction.create')">
                         {{ trans_choice('tags.expense', 2) }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('transaction.income') }}" :active="request()->routeIs('transaction.income')">
                         {{ __('tags.cash_register') }}
                     </x-jet-nav-link>
+                    @endcan
                     <x-jet-nav-link href="{{ route('reports.index') }}" :active="request()->routeIs('reports.index')">
                         {{ trans_choice('tags.report', 2) }}
                     </x-jet-nav-link>

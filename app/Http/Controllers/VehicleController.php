@@ -16,6 +16,14 @@ use Illuminate\Support\Str;
 class VehicleController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('permission:vehicle-list|vehicle-create');
+        $this->middleware('permission:vehicle-list', ['only' => ['show', 'index']]);
+        $this->middleware('permission:vehicle-create', ['only' => ['create', 'store']]);
+        //$this->middleware('role:Admin|Registro|Consulta', ['only' => ['index', 'show', 'create', 'store']]);
+        //$this->middleware('role:Consulta', ['only' => ['index', 'show']]);
+    }
+
     public function index(){
         return view('vehicles.index');
     }
