@@ -14,7 +14,7 @@ class UserController extends Controller
 {
 
     public function __construct(){
-        $this->middleware('role:admin|registro');
+        $this->middleware('role:Admin|Registro');
     }
     /**
      * Display a listing of the resource.
@@ -97,8 +97,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        $roles = Role::all();
+        $userRole = $user->roles->pluck('id')->all();
 
         return view('users.edit',compact('user','roles','userRole'));
     }

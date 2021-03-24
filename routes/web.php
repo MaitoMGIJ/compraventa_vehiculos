@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\ReportController;
@@ -35,6 +37,8 @@ Route::middleware(['auth:sanctum'])->resource('vehicle', VehicleController::clas
 Route::middleware(['auth:sanctum'])->resource('transaction', TransactionController::class)->only('create', 'store');
 Route::middleware(['auth:sanctum'])->resource('users', UserController::class);
 Route::middleware(['auth:sanctum'])->resource('roles', RoleController::class);
+Route::middleware(['auth:sanctum'])->resource('agents', AgentController::class);
+Route::middleware(['auth:sanctum'])->get('admin', [AdminController::class, 'index'])->name('admin.index');
 Route::middleware(['auth:sanctum'])->get('transaction/end', [TransactionController::class, 'end'])->name('transaction.end');
 Route::middleware(['auth:sanctum'])->get('transaction/income', [TransactionController::class, 'income'])->name('transaction.income');
 

@@ -103,12 +103,12 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role = Role::find($id);
-        $permission = Permission::get();
+        $permissions = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
             ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
             ->all();
 
-        return view('roles.edit',compact('role','permission','rolePermissions'));
+        return view('roles.edit',compact('role','permissions','rolePermissions'));
     }
 
     /**
@@ -120,19 +120,28 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $message = __('messages.role.updated.fail');
+        $error = true;
+
         $this->validate($request, [
             'name' => 'required',
-            'permission' => 'required',
+            'permissions' => 'required',
         ]);
 
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
 
-        $role->syncPermissions($request->input('permission'));
+        $role->syncPermissions($request->input('permissions'));
+
+        $error = false;
+        $message = __('messages.role.updated.done');
 
         return redirect()->route('roles.index')
-                        ->with('success','Role updated successfully');
+                        ->with([
+                            'error' => $error,
+                            'message' => $message
+                        ]);
     }
     /**
      * Remove the specified resource from storage.

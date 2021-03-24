@@ -29,6 +29,9 @@
                     <x-jet-nav-link href="{{ route('reports.index') }}" :active="request()->routeIs('reports.index')">
                         {{ trans_choice('tags.report', 2) }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')">
+                        {{ __('tags.administration') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

@@ -62,5 +62,10 @@ return [
     'password' => 'Contraseña',
     'confirm-password' => 'Confirmar Contraseña',
     'role' => 'Rol|Roles',
-    'username' => 'Nombre de Usuario'
+    'username' => 'Nombre de Usuario',
+    'edit' => 'Editar',
+    'action' => 'Acción',
+    'administration' => 'Administración',
+    'access' => 'Acceso',
+    'show' => 'Mostrar'
 ];
