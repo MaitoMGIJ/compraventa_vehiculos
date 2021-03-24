@@ -18,6 +18,7 @@ class VehiclesTable extends Component
     public $endDate;
     public $is_active;
     public $license;
+    public $top;
 
     public function render()
     {
@@ -25,7 +26,10 @@ class VehiclesTable extends Component
         $license = is_null($this->license) ? '' : $this->license;
         $initialDate = is_null($this->initialDate) ? '1900-01-01' : $this->initialDate;
         $endDate = is_null($this->endDate) ? '3000-01-01' : $this->endDate;
-        if($this->is_active == ''){
+        if($this->top){
+            $vehicles = Vehicle::where('vehicles.is_active', true)->
+                orderBy('vehicles.created_at', 'asc')->take(config('top.top'))->get();
+        }else if($this->is_active == ''){
             $vehicles = Vehicle::where('vehicles.license', 'like', "%$license%")->paginate(10);
         }else if($this->is_active == 'true'){
             $vehicles = Vehicle::where('vehicles.is_active', true)

@@ -10,7 +10,8 @@
                 'initialDate' => $initialDate,
                 'endDate' => $endDate,
                 'is_active' => $is_active,
-                'license' => $license
+                'license' => $license,
+                'top' => $top
             ], key('T'.time()))
         </div>
     </div>

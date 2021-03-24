@@ -35,7 +35,8 @@ class ReportController extends Controller
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end,
             'license' => $request->license,
-            'is_active' => 'true'
+            'is_active' => 'true',
+            'top' => false
         ]);
     }
 
@@ -44,7 +45,8 @@ class ReportController extends Controller
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end,
             'license' => $request->license,
-            'is_active' => 'false'
+            'is_active' => 'false',
+            'top' => false
         ]);
     }
 
@@ -53,7 +55,8 @@ class ReportController extends Controller
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end,
             'license' => $request->license,
-            'is_active' => ''
+            'is_active' => '',
+            'top' => false
         ]);
     }
 
@@ -62,6 +65,16 @@ class ReportController extends Controller
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end,
             'agentId' => $request->agentId
+        ]);
+    }
+
+    public function topUnsold(){
+        return view('reports.vehicles.list', [
+            'initialDate' => null,
+            'endDate' => null,
+            'license' => null,
+            'is_active' => '',
+            'top' => true
         ]);
     }
 }

@@ -21,7 +21,8 @@
                     'route' => route('reports.vehicles'),
                     'title' => trans_choice('tags.report', 1).' '.trans_choice('tags.vehicle', 2).' '.__('tags.history')
                 ])
-                @livewire('report-commission-agent-date-form');
+                @livewire('report-commission-agent-date-form')
+                @livewire('report-top-unsold-form')
             </div>
         </div>
     </div>

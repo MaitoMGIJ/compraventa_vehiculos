@@ -54,4 +54,6 @@ return [
     'entry' => 'Entrada|Entradas',
     'end' => 'Salida|Salidas',
     'history' => 'Historico',
+    'top' => 'Top',
+    'unsold' => 'Sin Vender'
 ];
