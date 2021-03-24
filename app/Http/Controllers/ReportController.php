@@ -34,6 +34,7 @@ class ReportController extends Controller
         return view('reports.vehicles.list', [
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end,
+            'license' => $request->license,
             'is_active' => 'true'
         ]);
     }
@@ -42,6 +43,7 @@ class ReportController extends Controller
         return view('reports.vehicles.list', [
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end,
+            'license' => $request->license,
             'is_active' => 'false'
         ]);
     }
@@ -50,6 +52,7 @@ class ReportController extends Controller
         return view('reports.vehicles.list', [
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end,
+            'license' => $request->license,
             'is_active' => ''
         ]);
     }

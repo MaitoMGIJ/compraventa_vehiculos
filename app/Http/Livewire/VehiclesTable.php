@@ -17,24 +17,31 @@ class VehiclesTable extends Component
     public $initialDate;
     public $endDate;
     public $is_active;
+    public $license;
 
     public function render()
     {
         $vehicles = [];
+        $license = is_null($this->license) ? '' : $this->license;
+        $initialDate = is_null($this->initialDate) ? '1900-01-01' : $this->initialDate;
+        $endDate = is_null($this->endDate) ? '3000-01-01' : $this->endDate;
         if($this->is_active == ''){
-            $vehicles = Vehicle::paginate(10);
+            $vehicles = Vehicle::where('vehicles.license', 'like', "%$license%")->paginate(10);
         }else if($this->is_active == 'true'){
             $vehicles = Vehicle::where('vehicles.is_active', true)
-                ->entryBetween($this->initialDate, $this->endDate)
+                ->where('vehicles.license', 'like', "%$license%")
+                ->entryBetween($initialDate, $endDate)
                 ->paginate(8);
         }else if($this->is_active == 'false'){
             $vehicles = Vehicle::where('vehicles.is_active', false)
-                ->endBetween($this->initialDate, $this->endDate)
+                ->where('vehicles.license', 'like', "%$license%")
+                ->endBetween($initialDate, $endDate)
                 ->get();
         }
 
         return view('livewire.vehicles-table', [
-            'vehicles' => $vehicles
+            'vehicles' => $vehicles,
+            'license' => $this->license
         ]);
     }
 

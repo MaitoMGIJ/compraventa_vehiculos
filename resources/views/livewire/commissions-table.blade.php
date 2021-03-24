@@ -16,7 +16,7 @@
                 class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md">
                 <x-heroicon-o-document-download class="w-10 h-10 text-center items-center"/>
                 <p>{{ __('tags.download') }}</p>
-            </button>
+                </button>
             </div>
             @endif
             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

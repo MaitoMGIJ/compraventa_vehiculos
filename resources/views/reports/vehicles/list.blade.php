@@ -9,7 +9,8 @@
             @livewire('vehicles-table', [
                 'initialDate' => $initialDate,
                 'endDate' => $endDate,
-                'is_active' => $is_active
+                'is_active' => $is_active,
+                'license' => $license
             ], key('T'.time()))
         </div>
     </div>
