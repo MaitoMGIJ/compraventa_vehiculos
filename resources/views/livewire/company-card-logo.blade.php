@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+<div class="max-w-md mx-auto bg-gray-100 rounded-xl shadow-md overflow-hidden md:max-w-2xl">
     <div class="md:flex">
       {{--<div class="md:flex-shrink-0">
           <livewire:company-logo class="h-48 w-full object-cover md:w-48" />
