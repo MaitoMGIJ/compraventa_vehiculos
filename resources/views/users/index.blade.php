@@ -12,6 +12,7 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-message-card/>
+            <x-error-list/>
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="flex justify-end pb-5">
                     <div class="flex justify-end pb-5">

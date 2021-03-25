@@ -112,6 +112,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $message = __('messages.user.updated.fail');
+        $error = true;
+
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
@@ -132,8 +135,14 @@ class UserController extends Controller
 
         $user->assignRole($request->input('roles'));
 
+        $error = false;
+        $message = __('messages.user.updated.done');
+
         return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+                        ->with([
+                            'error' => $error,
+                            'message' => $message
+                        ]);
     }
 
     /**
