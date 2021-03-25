@@ -37,7 +37,10 @@ class AdminController extends Controller
 
         TransactionType::create([
             'description' => Str::upper($request->name),
+            'entry' => false,
+            'end' => false,
             'expense' => true,
+            'income' => false,
             'is_active' => true
         ]);
 
