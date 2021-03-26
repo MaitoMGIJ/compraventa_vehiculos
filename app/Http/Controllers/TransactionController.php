@@ -44,7 +44,9 @@ class TransactionController extends Controller
     }
 
     public function income(Request $request){
-        $transaction_types = TransactionType::where('income', true)->where('withdrawal', true)->where('is_active', true)->get();
+        $transaction_types = TransactionType::where('is_active', true)->where(function ($query){
+            $query->where('income', true)->orWhere('withdrawal', true);
+        })->get();
         $agents = Agent::where('is_active', true)->get();
         return view('transactions.create', [
             'transaction_types' => $transaction_types,
