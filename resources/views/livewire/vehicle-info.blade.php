@@ -1,3 +1,3 @@
 <div>
-    <x-vehicle-card :vehicle="$vehicle"/>
+    <livewire:vehicle-card :vehicle="$vehicle"/>
 </div>

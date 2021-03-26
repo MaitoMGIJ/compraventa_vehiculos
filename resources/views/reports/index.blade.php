@@ -4,7 +4,7 @@
             {{ trans_choice('tags.report', 1) }}
         </h2>
     </x-slot>
-
+<div wire:loading.class="opacity-25">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
         <div class="bg-transparent overflow-hidden shadow-xl sm:rounded-lg">
             <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-1 mt-8">
@@ -38,4 +38,5 @@
             </div>
         </div>
     </div>
+</div>
 </x-app-layout>

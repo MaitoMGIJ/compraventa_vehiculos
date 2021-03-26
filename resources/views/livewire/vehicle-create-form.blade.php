@@ -29,10 +29,26 @@
         @endif
         @endif
     </select>
-    <label class="block font-medium text-sm text-gray-700" for="model">{{ __('tags.model') }}</label>
-    <input name="model" type="number" class="form-input w-full rounded-md shadow-sm" :value="old('model')" required/>
-    <label class="block font-medium text-sm text-gray-700" for="model">{{ __('tags.color') }}</label>
-    <input name="color" type="text" class="form-input w-full rounded-md shadow-sm" :value="old('color')" required/>
+    <div class="grid md:grid-cols-2 gap-4">
+        <div>
+            <label class="block font-medium text-sm text-gray-700" for="model">{{ __('tags.model') }}</label>
+            <input name="model" type="number" class="form-input w-full rounded-md shadow-sm" :value="old('model')" required/>
+        </div>
+        <div>
+            <label class="block font-medium text-sm text-gray-700" for="model">{{ __('tags.color') }}</label>
+            <input name="color" type="text" class="form-input w-full rounded-md shadow-sm" :value="old('color')" required/>
+        </div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-4">
+        <div>
+            <label class="block font-medium text-sm text-gray-700" for="model">{{ __('tags.insurance_expiration') }}</label>
+            <input name="insurance_expiration" type="date" class="form-input w-full rounded-md shadow-sm" :value="old('insurance_expiration')"/>
+        </div>
+        <div>
+            <label class="block font-medium text-sm text-gray-700" for="model">{{ __('tags.technomechanical_expiration') }}</label>
+            <input name="technomechanical_expiration" type="date" class="form-input w-full rounded-md shadow-sm" :value="old('technomechanical_expiration')"/>
+        </div>
+    </div>
     <label class="block font-medium text-sm text-gray-700">{{ __('tags.comment') }}</label>
     <textarea name="comment" class="form-input w-full rounded-md shadow-sm" :value="old('comment')" rows="2"></textarea>
     <label for="photo" class="block font-medium text-sm text-gray-700">{{ __('tags.upload_photo') }}</label>

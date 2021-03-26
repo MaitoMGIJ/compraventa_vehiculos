@@ -25,11 +25,6 @@ class CreateTransactionsTable extends Migration
             $table->bigInteger('user_id');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-
-            $table->foreign('vehicle_id')->references('id')->on('vehicles');
-            $table->foreign('transaction_type')->references('id')->on('transaction_types');
-            $table->foreign('agent_id')->references('id')->on('agents');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -19,8 +19,6 @@ class CreateVehicleReferencesTable extends Migration
             $table->string('description');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-
-            $table->foreign('brand')->references('id')->on('vehicle_brands');
         });
     }
 

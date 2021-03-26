@@ -60,6 +60,8 @@ class VehicleController extends Controller
                 'reference' => $request->reference,
                 'model' => $request->model,
                 'color' => Str::ucfirst($request->color),
+                'technomechanical_expiration' => $request->technomechanical_expiration,
+                'insurance_expiration' => $request->insurance_expiration,
                 'photo' => $photo->store('vehicles', 'public'),
                 'comment' => Str::ucfirst($request->comment)
             ]);

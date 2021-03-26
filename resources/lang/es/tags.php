@@ -25,7 +25,7 @@ return [
     'date_end' => 'Fecha Final',
     'start_date' => 'Fecha de Entrada',
     'end_date' => 'Fecha de Salida',
-    'upload_support' => 'Cargar Soporte',
+    'upload_support' => 'Cargar Contrato',
     'agent' => 'Asesor',
     'entry_agent' => 'Asesor de Entrada',
     'end_agent' => 'Asesor de Salida',
@@ -67,5 +67,7 @@ return [
     'action' => 'Acción',
     'administration' => 'Administración',
     'access' => 'Acceso',
-    'show' => 'Mostrar'
+    'show' => 'Mostrar',
+    'technomechanical_expiration' => 'Fecha de Vencimiento Tecnomecanica',
+    'insurance_expiration' => 'Fecha de Vencimiento SOAT'
 ];

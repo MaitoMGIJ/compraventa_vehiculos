@@ -10,10 +10,12 @@ class TransactionCreateForm extends Component
     public $agents;
     public $expense;
     public $income;
+    public $date;
 
     public function render()
     {
         return view('livewire.transaction-create-form', [
+            'now' => \Carbon\Carbon::now()->toDateString(),
             'transaction_types' => $this->transaction_types,
             'agents' => $this->agents,
             'expense' => $this->expense,

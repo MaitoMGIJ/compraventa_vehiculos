@@ -16,10 +16,11 @@ class CreateTransactionTypesTable extends Migration
         Schema::create('transaction_types', function (Blueprint $table) {
             $table->id();
             $table->string('description');
-            $table->boolean('entry')->default(true);
-            $table->boolean('end')->default(true);
-            $table->boolean('expense')->default(true);
-            $table->boolean('income')->default(true);
+            $table->boolean('entry')->default(false);
+            $table->boolean('end')->default(false);
+            $table->boolean('expense')->default(false);
+            $table->boolean('income')->default(false);
+            $table->boolean('withdrawal')->default(false);
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

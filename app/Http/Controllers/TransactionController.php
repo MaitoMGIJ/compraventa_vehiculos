@@ -44,7 +44,7 @@ class TransactionController extends Controller
     }
 
     public function income(Request $request){
-        $transaction_types = TransactionType::where('income', true)->where('is_active', true)->get();
+        $transaction_types = TransactionType::where('income', true)->where('withdrawal', true)->where('is_active', true)->get();
         $agents = Agent::where('is_active', true)->get();
         return view('transactions.create', [
             'transaction_types' => $transaction_types,
@@ -59,12 +59,12 @@ class TransactionController extends Controller
     public function store(TransactionRequest $request){
         $message = __('messages.transaction.created.fail');
         $error = true;
-
-        DB::transaction(function () use($request, &$message, &$error){
+        $is_active = ($request->is_active == "true") ? true : false;
+        DB::transaction(function () use($request, &$message, &$error, $is_active){
             $support = $request->file('support');
             if(!is_null($request->is_active)){
                 Vehicle::where('id', $request->vehicle)->update([
-                    'is_active' => $request->is_active
+                    'is_active' => $is_active
                 ]);
             }
             Transaction::create([

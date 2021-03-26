@@ -12,7 +12,7 @@ class Vehicle extends Model
 {
     use HasFactory, HasDefaultImage, HasCheckExistsUrl;
 
-    protected $fillable = ['license', 'type', 'brand', 'reference', 'model', 'color', 'photo', 'comment', 'is_active'];
+    protected $fillable = ['license', 'type', 'brand', 'reference', 'model', 'color', 'insurance_expiration', 'technomechanical_expiration', 'photo', 'comment', 'is_active'];
 
     public function reference(){
         return $this->belongsTo(VehicleReference::class, 'reference');

@@ -21,14 +21,12 @@ class CreateVehiclesTable extends Migration
             $table->bigInteger('reference');
             $table->integer('model');
             $table->string('color');
+            $table->date('insurance_expiration')->nullable();
+            $table->date('technomechanical_expiration')->nullable();
             $table->text('photo')->nullable();
             $table->text('comment');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
-
-            $table->foreign('type')->references('id')->on('vehicle_types');
-            $table->foreign('brand')->references('id')->on('vehicle_brands');
-            $table->foreign('reference')->references('id')->on('vehicle_references');
         });
     }
 

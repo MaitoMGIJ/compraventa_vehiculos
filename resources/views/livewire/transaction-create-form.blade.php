@@ -10,7 +10,7 @@
     <label class="block font-medium text-sm text-gray-700" for="value">{{ __('tags.value') }}</label>
     <input type="number" name="value" class="form-input w-full rounded-md shadow-sm" :value="old('value')" required/>
     <label class="block font-medium text-sm text-gray-700" for="date">{{ __('tags.date') }}</label>
-    <input type="date" name="date" class="form-input w-full rounded-md shadow-sm" :value="old('date')" required/>
+    <input type="date" name="date" class="form-input w-full rounded-md shadow-sm" value="{{ $now }}" :value="old('date')" readonly required/>
     <label for="support" class="block font-medium text-sm text-gray-700">{{ __('tags.upload_support') }}</label>
     <input type="file"
     @if(!($expense || $income))

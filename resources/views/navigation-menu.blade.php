@@ -155,21 +155,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('tags.home') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('vehicle.index') }}" :active="request()->routeIs('vehicle.index')">
-                {{ trans_choice('tags.vehicle', 2) }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('transaction.create') }}" :active="request()->routeIs('transaction.create')">
-                {{ trans_choice('tags.expense', 2) }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('transaction.income') }}" :active="request()->routeIs('transaction.income')">
-                {{ __('tags.cash_register') }}
-            </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('reports.index') }}" :active="request()->routeIs('transaction.income')">
-                {{ trans_choice('tags.report', 2) }}
-            </x-jet-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
@@ -190,7 +176,7 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('auth.profile') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -198,6 +184,29 @@
                         {{ __('API Tokens') }}
                     </x-jet-responsive-nav-link>
                 @endif
+
+                <!-- Menu -->
+
+                <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('tags.home') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('vehicle.index') }}" :active="request()->routeIs('vehicle.index')">
+                    {{ trans_choice('tags.vehicle', 2) }}
+                </x-jet-responsive-nav-link>
+                @can('transaction-create')
+                <x-jet-responsive-nav-link href="{{ route('transaction.create') }}" :active="request()->routeIs('transaction.create')">
+                    {{ trans_choice('tags.expense', 2) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('transaction.income') }}" :active="request()->routeIs('transaction.income')">
+                    {{ __('tags.cash_register') }}
+                </x-jet-responsive-nav-link>
+                @endcan
+                <x-jet-responsive-nav-link href="{{ route('reports.index') }}" :active="request()->routeIs('reports.index')">
+                    {{ trans_choice('tags.report', 2) }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('admin.index') }}" :active="request()->routeIs('admin.index')">
+                    {{ __('tags.administration') }}
+                </x-jet-responsive-nav-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

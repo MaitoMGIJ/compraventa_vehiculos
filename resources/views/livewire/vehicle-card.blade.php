@@ -4,6 +4,8 @@
         <h2 class="text-lg text-gray-600 uppercase">{{ $vehicle->name }}</h2>
         <h2 class="text-lg font-bold text-gray-600 uppercase">{{ $vehicle->license }}</h2>
         <h3 class="text-md text-gray-500">{{ $vehicle->color }}</h3>
+        <h4 class="text-sm text-gray-400">{{ __('tags.insurance_expiration').': '.$vehicle->insurance_expiration }}</h4>
+        <h4 class="text-sm text-gray-400">{{ __('tags.technomechanical_expiration').': '. $vehicle->technomechanical_expiration }}</h4>
         <h4 class="text-sm text-gray-400">{{ $vehicle->comment }}</h4>
     </a>
 </div>
