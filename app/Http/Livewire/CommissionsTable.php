@@ -22,8 +22,8 @@ class CommissionsTable extends Component
     {
         $transactions = null;
         $agents = null;
-        $initialDate = is_null($this->initialDate) ? '1900-01-01' : $this->initialDate;
-        $endDate = is_null($this->endDate) ? '3000-01-01' : $this->endDate;
+        $initialDate = is_null($this->initialDate) ? Transaction::min('date') : $this->initialDate;
+        $endDate = is_null($this->endDate) ? Transaction::max('date') : $this->endDate;
         if($this->agentId){
             $transactions = Transaction::where('agent_id', $this->agentId)
                 ->between($initialDate, $endDate)
@@ -62,8 +62,9 @@ class CommissionsTable extends Component
     }
 
     public function exportXLS(){
+        $columns = ($this->agentId) ? config('exports.commissions.xls') : config('exports.commissions.total.xls');
         return Excel::download(
-            new CommissionsExport($this->initialDate, $this->endDate, $this->agentId, config('exports.commissions.xls')),
+            new CommissionsExport($this->initialDate, $this->endDate, $this->agentId, $columns),
                 __('tags.commission').time().'.xlsx'
             );
     }

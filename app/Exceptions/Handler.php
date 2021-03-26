@@ -34,9 +34,16 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
+        //dd($this);
+        $this->renderable(function (Throwable $e) {
+            //dd($this, $e, $e instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException, 'errors.'.$e->getStatusCode());
             if ($e instanceof \Illuminate\Session\TokenMismatchException) {
                 return redirect()->route('login')->withErrors(['Su sesión ha expirado']);
+            }
+            if($e instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException){
+                return response()->view('errors.'.$e->getStatusCode(), [
+                    'exception' => $e
+                ], $e->getStatusCode());
             }
         });
     }

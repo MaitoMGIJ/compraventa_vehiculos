@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Exports\VehicleExport;
 use App\Exports\VehicleEndExport;
 use App\Exports\VehicleEntryExport;
+use App\Models\Transaction;
 use App\Models\Vehicle;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -24,8 +25,8 @@ class VehiclesTable extends Component
     {
         $vehicles = [];
         $license = is_null($this->license) ? '' : $this->license;
-        $initialDate = is_null($this->initialDate) ? '1900-01-01' : $this->initialDate;
-        $endDate = is_null($this->endDate) ? '3000-01-01' : $this->endDate;
+        $initialDate = is_null($this->initialDate) ? Transaction::min('date') : $this->initialDate;
+        $endDate = is_null($this->endDate) ? Transaction::max('date') : $this->endDate;
         if($this->top){
             $vehicles = Vehicle::where('vehicles.is_active', true)->
                 orderBy('vehicles.created_at', 'asc')->take(config('top.top'))->get();

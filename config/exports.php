@@ -52,6 +52,13 @@ return [
             'agent' => 'agents.name',
             'commission' => 'transactions.commission'
         ],
+        'total' => [
+            'xls' => [
+                'id' => 'agents.id',
+                'name' => 'agents.name',
+                'commission' => 'commissions'
+            ]
+        ]
     ],
     'vehicles' => [
         'end' => [

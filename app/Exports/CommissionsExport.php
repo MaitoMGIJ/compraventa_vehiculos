@@ -2,7 +2,9 @@
 
 namespace App\Exports;
 
+use App\Models\Agent;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -18,8 +20,8 @@ class CommissionsExport implements FromCollection, WithHeadings, ShouldAutoSize
     public $columns;
 
     public function __construct($initialDate, $endDate, $agentId, $columns){
-        $this->initialDate = $initialDate;
-        $this->endDate = $endDate;
+        $this->initialDate = is_null($initialDate) ? Transaction::min('date') : $initialDate;
+        $this->endDate = is_null($endDate) ? Transaction::max('date') : $endDate;
         $this->columns = $columns;
         $this->agentId = $agentId;
     }
@@ -29,18 +31,28 @@ class CommissionsExport implements FromCollection, WithHeadings, ShouldAutoSize
     */
     public function collection()
     {
-        $transactions = Transaction::where('agent_id', $this->agentId)
-            ->between($this->initialDate, $this->endDate)
-            ->leftJoin('transaction_types', 'transaction_types.id', '=', 'transactions.transaction_type')
-            ->leftJoin('vehicles', 'vehicles.id', '=', 'transactions.vehicle_id')
-            ->leftJoin('vehicle_brands', 'vehicle_brands.id', '=', 'vehicles.brand')
-            ->leftJoin('vehicle_references', 'vehicle_references.id', '=', 'vehicles.reference')
-            ->leftJoin('agents', 'agents.id', '=', 'transactions.agent_id')
-            ->orderBy('transactions.date')
-            ->orderBy('transactions.created_at')
-            ->get(array_values($this->columns));
+        if($this->agentId){
+            $transactions = Transaction::where('agent_id', $this->agentId)
+                ->between($this->initialDate, $this->endDate)
+                ->leftJoin('transaction_types', 'transaction_types.id', '=', 'transactions.transaction_type')
+                ->leftJoin('vehicles', 'vehicles.id', '=', 'transactions.vehicle_id')
+                ->leftJoin('vehicle_brands', 'vehicle_brands.id', '=', 'vehicles.brand')
+                ->leftJoin('vehicle_references', 'vehicle_references.id', '=', 'vehicles.reference')
+                ->leftJoin('agents', 'agents.id', '=', 'transactions.agent_id')
+                ->orderBy('transactions.date')
+                ->orderBy('transactions.created_at')
+                ->get(array_values($this->columns));
 
-        return $transactions;
+            return $transactions;
+        }else{
+            $agents = Agent::join('transactions', 'transactions.agent_id', '=', 'agents.id')
+                ->whereBetween('transactions.date', [$this->initialDate, $this->endDate])
+                ->groupBy('agents.id')
+                ->select('agents.id', 'agents.name', DB::raw('SUM(transactions.commission) as commissions'))
+                ->get(array_values($this->columns));
+
+            return $agents;
+        }
     }
 
     public function headings(): array
