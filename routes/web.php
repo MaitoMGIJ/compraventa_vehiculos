@@ -57,3 +57,23 @@ Route::middleware(['auth:sanctum'])->post('reports/vehicles/inventory', [ReportC
 
 Route::post('brand/type', [FormController::class, 'brandType'])->name('brand.type');
 Route::post('reference/brand/type', [FormController::class, 'referenceBrand'])->name('reference.brand');
+
+//Please only in production
+/*
+Route::get('storage/{filename}', function ($filename)
+{
+    $path = storage_path("app/public/$filename");
+
+    if (!File::exists($path)) {
+        abort(404);
+    }
+
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+})->where('filename', '.*');
+*/

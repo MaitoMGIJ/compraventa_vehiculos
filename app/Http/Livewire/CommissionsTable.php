@@ -32,6 +32,7 @@ class CommissionsTable extends Component
             $agents = Agent::join('transactions', 'transactions.agent_id', '=', 'agents.id')
                 ->whereBetween('transactions.date', [$initialDate, $endDate])
                 ->groupBy('agents.id')
+                ->groupBy('agents.name')
                 ->select('agents.name', DB::raw('SUM(transactions.commission) as commissions'))
                 ->get();
             $agents->map(function($agent){

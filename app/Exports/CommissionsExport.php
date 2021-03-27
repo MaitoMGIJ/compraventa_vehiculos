@@ -48,6 +48,7 @@ class CommissionsExport implements FromCollection, WithHeadings, ShouldAutoSize
             $agents = Agent::join('transactions', 'transactions.agent_id', '=', 'agents.id')
                 ->whereBetween('transactions.date', [$this->initialDate, $this->endDate])
                 ->groupBy('agents.id')
+                ->groupBy('agents.name')
                 ->select('agents.id', 'agents.name', DB::raw('SUM(transactions.commission) as commissions'))
                 ->get(array_values($this->columns));
 
