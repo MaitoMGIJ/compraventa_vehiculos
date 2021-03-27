@@ -21,6 +21,8 @@ class BalanceTable extends Component
     {
         $this->transactions = collect();
 
+        $this->initialDate = is_null($this->initialDate) ? Transaction::min('date') : $this->initialDate;
+
         $dates = Transaction::between($this->initialDate, $this->endDate)->pluck('date')->values()->unique();
 
         foreach($dates as $date){

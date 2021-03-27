@@ -12,7 +12,7 @@
                 <div class="p-4">
                 {{ csrf_field() }}
                 <label class="block font-medium text-sm text-gray-700" for="date_start">{{ __('tags.date_start') }}</label>
-                <input type="date" name="date_start" class="form-input w-full rounded-md shadow-sm" :value="old('date_start')" required/>
+                <input type="date" name="date_start" class="form-input w-full rounded-md shadow-sm" :value="old('date_start')"/>
                 <label class="block font-medium text-sm text-gray-700" for="date_end">{{ __('tags.date_end') }}</label>
                 <input type="date" name="date_end" class="form-input w-full rounded-md shadow-sm" :value="old('date_end')" required/>
                 <div class="flex justify-end pt-10">
