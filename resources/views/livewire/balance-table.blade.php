@@ -85,35 +85,38 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    <thead class="bg-gray-50">
+                    <tfoot class="bg-gray-50">
                         <tr>
-                            <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th colspan="7" scope="col"
+                                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('tags.cash') }}
                             </th>
                             <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                            </th>
-                            <th scope="col"
-                                class="px-6 py-3 text-center text-3xl font-bold text-black uppercase tracking-wider">
+                                class="px-6 py-3 text-center text-2xl font-bold text-black uppercase tracking-wider">
                                     ${{ number_format($transactions->sum('balance')) }}
                             </th>
                         </tr>
-                    </thead>
+                        <tr>
+                            <th colspan="7"
+                                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ trans_choice('tags.vehicle', 2) }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-2xl font-bold text-black uppercase tracking-wider">
+                                    ${{ number_format($unSold) }}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="7"
+                                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                {{ __('tags.total') }}
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-center text-3xl font-bold text-black uppercase tracking-wider">
+                                    ${{ number_format($transactions->sum('balance') + $unSold) }}
+                            </th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

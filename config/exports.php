@@ -181,7 +181,6 @@ return [
                 'entry_commission' => 'entry_commission',
                 'entry_agent' => 'entry_agent',
                 'expense_value' => 'expenses',
-                'earnings' => 'earnings'
             ],
             'xls' => [
                 'id' => 'vehicles.id',
@@ -194,7 +193,6 @@ return [
                 'entry_commission' => 'entry_commission',
                 'entry_agent' => 'entry_agent',
                 'expense_value' => 'expenses',
-                'earnings' => 'earnings'
             ]
         ]
 

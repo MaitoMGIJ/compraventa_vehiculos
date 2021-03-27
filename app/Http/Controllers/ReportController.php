@@ -93,7 +93,7 @@ class ReportController extends Controller
     public function inventory(Request $request){
         return view('reports.vehicles.list', [
             'initialDate' => $request->date_start,
-            'endDate' => $request->endDate,
+            'endDate' => $request->date_end,
             'license' => $request->license,
             'is_active' => '',
             'top' => false,

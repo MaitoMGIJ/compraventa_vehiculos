@@ -51,6 +51,7 @@
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 {{ __('tags.expense_value') }}
                             </th>
+                            @if(!$inventory)
                             <th scope="col"
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 {{ __('tags.end_date') }}
@@ -71,6 +72,7 @@
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 {{ __('tags.earnings') }}
                             </th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -123,6 +125,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 ${{ number_format($vehicle->sumExpense) }}
                             </td>
+                            @if(!$inventory)
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
                                 @if(!is_null($vehicle->getEndTransaction()))
                                 {{ $vehicle->getEndTransaction()->date }}
@@ -154,6 +157,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 ${{ number_format($vehicle->earnings) }}
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
@@ -177,6 +181,7 @@
                             <th scope="col"
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             </th>
+                            @if(!$inventory)
                             <th scope="col"
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                             </th>
@@ -196,6 +201,7 @@
                                 class="px-6 py-3 text-center text-xl font-bold text-black uppercase tracking-wider">
                                 ${{ number_format($vehicles->pluck('earnings')->sum()) }}
                             </th>
+                            @endif
                         </tr>
                     </thead>
                 </table>

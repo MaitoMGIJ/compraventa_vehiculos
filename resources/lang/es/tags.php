@@ -72,5 +72,7 @@ return [
     'insurance_expiration' => 'Fecha de Vencimiento SOAT',
     'inventory' => 'Inventario',
     'balance' => 'Balance',
-    'withdrawal' => 'Retiro'
+    'withdrawal' => 'Retiro',
+    'cash' => 'Efectivo',
+    'total' => 'Total'
 ];

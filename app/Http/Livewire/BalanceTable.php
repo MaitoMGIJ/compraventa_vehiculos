@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Exports\BalanceExport;
 use App\Models\Transaction;
 use App\Models\TransactionType;
+use App\Models\Vehicle;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
@@ -56,8 +57,19 @@ class BalanceTable extends Component
             $this->transactions->push($transaction);
         }
 
+        $unSold = Vehicle::where('vehicles.is_active', true)
+            ->entryBetween($this->initialDate, $this->endDate)
+            ->sum('value') +
+            Vehicle::where('vehicles.is_active', true)
+            ->entryBetween($this->initialDate, $this->endDate)
+            ->sum('commission') +
+            Vehicle::where('vehicles.is_active', true)
+            ->entryBetween($this->initialDate, $this->endDate)->get()->sum('sumExpense')
+            ;
+
         return view('livewire.balance-table', [
-            'transactions' => $this->transactions
+            'transactions' => $this->transactions,
+            'unSold' => $unSold
         ]);
     }
 

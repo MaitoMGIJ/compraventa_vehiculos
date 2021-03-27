@@ -30,13 +30,16 @@ class VehiclesTable extends Component
         $initialDate = is_null($this->initialDate) ? Transaction::min('date') : $this->initialDate;
         $endDate = is_null($this->endDate) ? Transaction::max('date') : $this->endDate;
         if($this->inventory){
-            $v = Vehicle::where('vehicles.is_active', true)
-                ->where('vehicles.license', 'like', "%$license%")
+            $v = Vehicle::where('vehicles.license', 'like', "%$license%")
                 ->entryBetween($initialDate, $endDate)->get();
-            $vehicles = $v->filter(function($vehicle){
+            $vehicles = $v->filter(function($vehicle) use($endDate){
                 $v = Vehicle::find($vehicle->id);
                 if(is_null($v->getEndTransaction())){
                     return $v;
+                }else{
+                    if($v->getEndTransaction()->date > $endDate){
+                        return $v;
+                    }
                 }
             });
         }else if($this->top){
@@ -45,8 +48,7 @@ class VehiclesTable extends Component
         }else if($this->is_active == ''){
             $vehicles = Vehicle::where('vehicles.license', 'like', "%$license%")->paginate(10);
         }else if($this->is_active == 'true'){
-            $vehicles = Vehicle::where('vehicles.is_active', true)
-                ->where('vehicles.license', 'like', "%$license%")
+            $vehicles = Vehicle::where('vehicles.license', 'like', "%$license%")
                 ->entryBetween($initialDate, $endDate)
                 ->paginate(8);
         }else if($this->is_active == 'false'){
