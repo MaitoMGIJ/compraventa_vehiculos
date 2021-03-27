@@ -39,7 +39,7 @@
                                 <label class="leading-loose">{{ trans_choice('tags.role', 2) }}</label>
                                 <select name="permissions[]" id="permissions" class="bg-white text-gray-900 appearance-none border-none inline-block py-3 pl-3 pr-8 rounded leading-tight w-full" multiple>
                                     @foreach($permissions as $permission)
-                                        <option value="{{ $permission->id }}" class="pt-6">{{ $permission->name }}</option>
+                                        <option value="{{ $permission->id }}" class="pt-6">{{ __('permissions.'.$permission->name) }}</option>
                                     @endforeach
                                 </select>
                             </div>

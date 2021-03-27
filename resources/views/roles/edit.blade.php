@@ -45,7 +45,7 @@
                                     <label class="pt-6">
                                     <input type="checkbox" name="permissions[]" value="{{ $permission->id }}"
                                         {{ in_array($permission->id, $rolePermissions) ? 'checked' : '' }}
-                                        class="pt-6 pl-6"/><span class="px-2">{{ $permission->name }}</span>
+                                        class="pt-6 pl-6"/><span class="px-2">{{ __('permissions.'.$permission->name) }}</span>
                                     </label>
                                     @endforeach
                             </div>
