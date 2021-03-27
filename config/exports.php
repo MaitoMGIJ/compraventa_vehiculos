@@ -168,6 +168,34 @@ return [
                 'end_agent' => 'end_agent',
                 'earnings' => 'earnings'
             ]
+        ],
+        'inventory' => [
+            'csv' => [
+                'id' => 'vehices.id',
+                'license' => 'vehicles.license',
+                'brand' => 'vehicles.brand',
+                'reference' => 'vehicles.reference',
+                'model' => 'vehicles.model',
+                'start_date' => 'entry_date',
+                'entry_value' => 'entry_value',
+                'entry_commission' => 'entry_commission',
+                'entry_agent' => 'entry_agent',
+                'expense_value' => 'expenses',
+                'earnings' => 'earnings'
+            ],
+            'xls' => [
+                'id' => 'vehicles.id',
+                'license' => 'vehicles.license',
+                'brand' => 'vehicles.brand',
+                'reference' => 'vehicles.reference',
+                'model' => 'vehicles.model',
+                'start_date' => 'entry_date',
+                'entry_value' => 'entry_value',
+                'entry_commission' => 'entry_commission',
+                'entry_agent' => 'entry_agent',
+                'expense_value' => 'expenses',
+                'earnings' => 'earnings'
+            ]
         ]
 
     ]

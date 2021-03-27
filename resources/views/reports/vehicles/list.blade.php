@@ -11,7 +11,8 @@
                 'endDate' => $endDate,
                 'is_active' => $is_active,
                 'license' => $license,
-                'top' => $top
+                'top' => $top,
+                'inventory' => $inventory
             ], key('T'.time()))
         </div>
     </div>

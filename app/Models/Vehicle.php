@@ -144,6 +144,22 @@ class Vehicle extends Model
         ;
     }
 
+    public function scopeInventoryReport($query, $initialDate, $endDate){
+        return $query->join('transactions as t', 'vehicles.id', '=', 't.vehicle_id')
+        ->join('transaction_types as tt', 't.transaction_type', '=', 'tt.id')
+        ->join('vehicle_brands as vb', 'vb.id', '=', 'vehicles.brand')
+        ->join('vehicle_references as vr', 'vr.id', '=', 'vehicles.reference')
+        ->join('agents as a', 'a.id', '=', 't.agent_id')
+        ->whereBetween('t.date', [$initialDate, $endDate])
+        ->where('tt.entry', true)
+        ->where('vehicles.is_active', true)
+        ->orderBy('entry_date')
+        ->select(DB::raw("vehicles.id, vehicles.license, vb.description as brand, vr.description as reference, vehicles.model, (select t2.date from transactions t2 inner join agents a2 on a2.id = t2.agent_id inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.entry is true) as entry_date, (select t2.value from transactions t2 inner join agents a2 on a2.id = t2.agent_id inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.entry is true) as entry_value, (select t2.commission from transactions t2 inner join agents a2 on a2.id = t2.agent_id inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.entry is true) as entry_commission, (select a2.name as agent from transactions t2 inner join agents a2 on a2.id = t2.agent_id inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.entry is true) as entry_agent, (select sum(t2.value) from transactions t2 inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.expense is true) as expenses, ((select t2.value from transactions t2 inner join agents a2 on a2.id = t2.agent_id inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.end is true) - ((select t2.value from transactions t2 inner join agents a2 on a2.id = t2.agent_id inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.entry is true) + (select t2.commission from transactions t2 inner join agents a2 on a2.id = t2.agent_id inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.entry is true) + (select t2.commission from transactions t2 inner join agents a2 on a2.id = t2.agent_id inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.end is true) + (select coalesce(sum(t2.value), 0) from transactions t2 inner join transaction_types tt2 on t2.transaction_type = tt2.id where t2.vehicle_id = vehicles.id and tt2.expense is true ))) as earnings"))
+        ;
+
+        //t.date as end_date, t.value as end_value, t.commission as end_commission, a.name as end_agent,
+    }
+
     public function scopeAllReport($query, $initialDate, $endDate){
         return $query->join('transactions as t', 'vehicles.id', '=', 't.vehicle_id')
         ->join('transaction_types as tt', 't.transaction_type', '=', 'tt.id')

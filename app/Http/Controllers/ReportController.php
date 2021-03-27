@@ -36,7 +36,8 @@ class ReportController extends Controller
             'endDate' => $request->date_end,
             'license' => $request->license,
             'is_active' => 'true',
-            'top' => false
+            'top' => false,
+            'inventory' => false
         ]);
     }
 
@@ -46,7 +47,8 @@ class ReportController extends Controller
             'endDate' => $request->date_end,
             'license' => $request->license,
             'is_active' => 'false',
-            'top' => false
+            'top' => false,
+            'inventory' => false
         ]);
     }
 
@@ -56,7 +58,8 @@ class ReportController extends Controller
             'endDate' => $request->date_end,
             'license' => $request->license,
             'is_active' => '',
-            'top' => false
+            'top' => false,
+            'inventory' => false
         ]);
     }
 
@@ -74,7 +77,19 @@ class ReportController extends Controller
             'endDate' => null,
             'license' => null,
             'is_active' => '',
-            'top' => true
+            'top' => true,
+            'inventory' => false
+        ]);
+    }
+
+    public function inventory(Request $request){
+        return view('reports.vehicles.list', [
+            'initialDate' => $request->date_start,
+            'endDate' => $request->endDate,
+            'license' => $request->license,
+            'is_active' => '',
+            'top' => false,
+            'inventory' => true
         ]);
     }
 }

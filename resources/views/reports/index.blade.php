@@ -8,6 +8,10 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
         <div class="bg-transparent overflow-hidden shadow-xl sm:rounded-lg">
             <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-1 mt-8">
+                @livewire('report-vehicle-date-form', [
+                    'route' => route('reports.vehicles.inventory'),
+                    'title' => __('tags.inventory')
+                ])
                 @can('report-transaction-show')
                 @livewire('report-transaction-date-form')
                 @endcan

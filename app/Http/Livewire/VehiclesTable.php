@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Exports\VehicleExport;
 use App\Exports\VehicleEndExport;
 use App\Exports\VehicleEntryExport;
+use App\Exports\VehicleInventoryExport;
 use App\Models\Transaction;
 use App\Models\Vehicle;
 use Livewire\Component;
@@ -19,6 +20,7 @@ class VehiclesTable extends Component
     public $endDate;
     public $is_active;
     public $license;
+    public $inventory;
     public $top;
 
     public function render()
@@ -27,7 +29,17 @@ class VehiclesTable extends Component
         $license = is_null($this->license) ? '' : $this->license;
         $initialDate = is_null($this->initialDate) ? Transaction::min('date') : $this->initialDate;
         $endDate = is_null($this->endDate) ? Transaction::max('date') : $this->endDate;
-        if($this->top){
+        if($this->inventory){
+            $v = Vehicle::where('vehicles.is_active', true)
+                ->where('vehicles.license', 'like', "%$license%")
+                ->entryBetween($initialDate, $endDate)->get();
+            $vehicles = $v->filter(function($vehicle){
+                $v = Vehicle::find($vehicle->id);
+                if(is_null($v->getEndTransaction())){
+                    return $v;
+                }
+            });
+        }else if($this->top){
             $vehicles = Vehicle::where('vehicles.is_active', true)->
                 orderBy('vehicles.created_at', 'asc')->take(config('top.top'))->get();
         }else if($this->is_active == ''){
@@ -46,7 +58,8 @@ class VehiclesTable extends Component
 
         return view('livewire.vehicles-table', [
             'vehicles' => $vehicles,
-            'license' => $this->license
+            'license' => $this->license,
+            'inventory' => $this->inventory
         ]);
     }
 
@@ -75,7 +88,12 @@ class VehiclesTable extends Component
     }
 
     public function exportXLS(){
-        if($this->is_active == ''){
+        if($this->inventory){
+            return Excel::download(
+                new VehicleInventoryExport($this->initialDate, $this->endDate, $this->license, config('exports.vehicles.inventory.xls')),
+                    trans_choice('tags.vehicle', 2).time().'.xlsx'
+                );
+        }else if($this->is_active == ''){
             return Excel::download(
                 new VehicleExport($this->initialDate, $this->endDate, $this->license, config('exports.vehicles.all.xls')),
                     trans_choice('tags.vehicle', 2).time().'.xlsx'
