@@ -77,17 +77,17 @@ class VehiclesTable extends Component
     public function exportXLS(){
         if($this->is_active == ''){
             return Excel::download(
-                new VehicleExport($this->initialDate, $this->endDate, config('exports.vehicles.all.xls')),
+                new VehicleExport($this->initialDate, $this->endDate, $this->license, config('exports.vehicles.all.xls')),
                     trans_choice('tags.vehicle', 2).time().'.xlsx'
                 );
         }else if($this->is_active == 'true'){
             return Excel::download(
-                new VehicleEntryExport($this->initialDate, $this->endDate, config('exports.vehicles.entry.xls')),
+                new VehicleEntryExport($this->initialDate, $this->endDate, $this->license, config('exports.vehicles.entry.xls')),
                     trans_choice('tags.vehicle', 2).time().'.xlsx'
                 );
         }else if($this->is_active == 'false'){
             return Excel::download(
-                new VehicleEndExport($this->initialDate, $this->endDate, config('exports.vehicles.end.xls')),
+                new VehicleEndExport($this->initialDate, $this->endDate, $this->license, config('exports.vehicles.end.xls')),
                     trans_choice('tags.vehicle', 2).time().'.xlsx'
                 );
         }

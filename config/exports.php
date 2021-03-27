@@ -63,6 +63,7 @@ return [
     'vehicles' => [
         'end' => [
             'csv' => [
+                'id' => 'vehicles.id',
                 'license' => 'vehicles.license',
                 'brand' => 'vehicles.brand',
                 'reference' => 'vehicles.reference',
@@ -79,6 +80,7 @@ return [
                 'earnings' => 'earnings'
             ],
             'xls' => [
+                'id' => 'vehicles.id',
                 'license' => 'vehicles.license',
                 'brand' => 'vehicles.brand',
                 'reference' => 'vehicles.reference',
@@ -97,6 +99,7 @@ return [
         ],
         'entry' => [
             'csv' => [
+                'id' => 'vehicles.id',
                 'license' => 'vehicles.license',
                 'brand' => 'vehicles.brand',
                 'reference' => 'vehicles.reference',
@@ -113,6 +116,7 @@ return [
                 'earnings' => 'earnings'
             ],
             'xls' => [
+                'id' =>'vehicles.id',
                 'license' => 'vehicles.license',
                 'brand' => 'vehicles.brand',
                 'reference' => 'vehicles.reference',
@@ -131,6 +135,7 @@ return [
         ],
         'all' => [
             'csv' => [
+                'id' => 'vehices.id',
                 'license' => 'vehicles.license',
                 'brand' => 'vehicles.brand',
                 'reference' => 'vehicles.reference',
@@ -147,6 +152,7 @@ return [
                 'earnings' => 'earnings'
             ],
             'xls' => [
+                'id' => 'vehicles.id',
                 'license' => 'vehicles.license',
                 'brand' => 'vehicles.brand',
                 'reference' => 'vehicles.reference',

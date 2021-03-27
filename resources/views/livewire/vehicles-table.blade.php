@@ -6,10 +6,10 @@
     <a href="{{ route('reports.index') }}" class="text-sm text-gray-700 underline">{{ __('tags.return') }}</a>
     </div>
 </x-slot>
-<div class="flex flex-col">
+<div class="flex flex-col" wire:loading.class="opacity-25">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-            @if(is_null($license) && (!$top))
+            @if(!$top)
             <div class="flex justify-end">
                 <button
                 wire:click="exportXLS"
@@ -90,7 +90,7 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 @livewire('vehicle-mini-card-with-image', [
                                     'vehicle' => \App\Models\Vehicle::find($vehicle->id)
-                                ], key($vehicle->id.time()));
+                                ], key($vehicle->id.time()))
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center">
                                 @if(!is_null($vehicle->getEntryTransaction()))

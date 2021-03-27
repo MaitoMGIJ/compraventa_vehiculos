@@ -1,5 +1,5 @@
 <form action="{{ $route }}" enctype="multipart/form-data" method="post">
-    <div class="pb-5">
+    <div class="pb-5" wire:loading.class="opacity-25">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <x-message-card/>
             <x-error-list/>
