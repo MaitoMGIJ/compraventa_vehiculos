@@ -47,6 +47,7 @@ Route::middleware(['auth:sanctum'])->get('transaction/income', [TransactionContr
 
 Route::middleware(['auth:sanctum'])->get('reports', [ReportController::class, 'index'])->name('reports.index');
 Route::middleware(['auth:sanctum'])->post('reports/transactions', [ReportController::class, 'transactions'])->name('reports.transactions');
+Route::middleware(['auth:sanctum'])->post('reports/balance', [ReportController::class, 'balance'])->name('reports.balance');
 Route::middleware(['auth:sanctum'])->post('reports/vehicles/active', [ReportController::class, 'activeVehicles'])->name('reports.vehicles.active');
 Route::middleware(['auth:sanctum'])->post('reports/vehicles/inactive', [ReportController::class, 'inactiveVehicles'])->name('reports.vehicles.inactive');
 Route::middleware(['auth:sanctum'])->post('reports/vehicles', [ReportController::class, 'vehicles'])->name('reports.vehicles');

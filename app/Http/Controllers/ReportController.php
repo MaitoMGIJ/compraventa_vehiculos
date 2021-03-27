@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use App\Models\TransactionType;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Livewire\Livewire;
 
 class ReportController extends Controller
 {
@@ -25,6 +26,13 @@ class ReportController extends Controller
             'transactions' => $transactions
         ]);*/
         return view('reports.transactions.list', [
+            'initialDate' => $request->date_start,
+            'endDate' => $request->date_end
+        ]);
+    }
+
+    public function balance(Request $request){
+        return view('reports.transactions.balance', [
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end
         ]);

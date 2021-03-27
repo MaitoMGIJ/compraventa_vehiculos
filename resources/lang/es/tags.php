@@ -70,5 +70,7 @@ return [
     'show' => 'Mostrar',
     'technomechanical_expiration' => 'Fecha de Vencimiento Tecnomecanica',
     'insurance_expiration' => 'Fecha de Vencimiento SOAT',
-    'inventory' => 'Inventario'
+    'inventory' => 'Inventario',
+    'balance' => 'Balance',
+    'withdrawal' => 'Retiro'
 ];

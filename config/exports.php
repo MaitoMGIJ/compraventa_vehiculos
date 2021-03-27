@@ -198,5 +198,18 @@ return [
             ]
         ]
 
+            ],
+    'balance' => [
+        'xls' => [
+            'date' => 'date',
+            'entry' => 'entry',
+            'expense' => 'expense',
+            'commission' => 'commission',
+            'end' => 'end',
+            'income' => 'income',
+            'withdrawal' => 'withdrawal',
+            'balance' => 'balance'
+        ]
     ]
+
 ];

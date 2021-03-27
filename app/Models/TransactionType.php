@@ -30,4 +30,8 @@ class TransactionType extends Model
     public function scopeIncome($query){
         return $query->where('income', true);
     }
+
+    public function scopeWithdrawal($query){
+        return $query->where('withdrawal', true);
+    }
 }
