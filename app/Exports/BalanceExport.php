@@ -37,6 +37,9 @@ class BalanceExport implements FromArray, WithHeadings, ShouldAutoSize
             $transaction['entries'] = Transaction::between($date, $date)
                 ->whereIn('transaction_type', TransactionType::entry()->get()->pluck('id')->values()->toArray())->sum('value');
 
+            $transaction['expenses'] = Transaction::between($date, $date)
+                ->whereIn('transaction_type', TransactionType::expense()->get()->pluck('id')->values()->toArray())->sum('value');
+
             $transaction['commissions'] = Transaction::between($date, $date)
             ->whereIn('transaction_type', TransactionType::entry()->get()->pluck('id')->values()->toArray())->sum('commission') +
             Transaction::between($date, $date)
@@ -44,9 +47,6 @@ class BalanceExport implements FromArray, WithHeadings, ShouldAutoSize
 
             $transaction['ends'] = Transaction::between($date, $date)
                 ->whereIn('transaction_type', TransactionType::end()->get()->pluck('id')->values()->toArray())->sum('value');
-
-            $transaction['expenses'] = Transaction::between($date, $date)
-                ->whereIn('transaction_type', TransactionType::expense()->get()->pluck('id')->values()->toArray())->sum('value');
 
             $transaction['incomes'] = Transaction::between($date, $date)
                 ->whereIn('transaction_type', TransactionType::income()->get()->pluck('id')->values()->toArray())->sum('value');

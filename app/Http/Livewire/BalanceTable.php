@@ -57,15 +57,24 @@ class BalanceTable extends Component
             $this->transactions->push($transaction);
         }
 
-        $unSold = Vehicle::where('vehicles.is_active', true)
-            ->entryBetween($this->initialDate, $this->endDate)
-            ->sum('value') +
-            Vehicle::where('vehicles.is_active', true)
-            ->entryBetween($this->initialDate, $this->endDate)
-            ->sum('commission') +
-            Vehicle::where('vehicles.is_active', true)
-            ->entryBetween($this->initialDate, $this->endDate)->get()->sum('sumExpense')
-            ;
+        $v = Vehicle::entryBetween($this->initialDate, $this->endDate)->get();
+        $vehicles = $v->filter(function($vehicle){
+            $v = Vehicle::find($vehicle->id);
+            if(is_null($v->getEndTransaction())){
+                return $v;
+            }else{
+                if($v->getEndTransaction()->date > $this->endDate){
+                    return $v;
+                }
+            }
+        });
+
+        $vehicles->map(function($vehicle){
+            $vehicle->expense = $vehicle->getExpenseTransactions()->where('date', '<=', $this->endDate)->sum('value');
+            return $vehicle;
+        });
+
+        $unSold = $vehicles->sum('value') + $vehicles->sum('commission') + $vehicles->sum('expense');
 
         return view('livewire.balance-table', [
             'transactions' => $this->transactions,
