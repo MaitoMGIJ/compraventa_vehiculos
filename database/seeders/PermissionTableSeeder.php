@@ -65,5 +65,9 @@ class PermissionTableSeeder extends Seeder
         $role->syncPermissions($permissions);
 
         $user->assignRole([$role->id]);
+
+        Role::create(['name' => 'Registro']);
+
+        Role::create(['name' => 'Consulta']);
     }
 }

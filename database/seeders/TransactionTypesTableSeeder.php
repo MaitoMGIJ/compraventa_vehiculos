@@ -96,5 +96,23 @@ class TransactionTypesTableSeeder extends Seeder
             'income'=> false,
             'withdrawal' => true
         ]);
+
+        TransactionType::create([
+            'description' => 'SOAT',
+            'entry' => false,
+            'end' => false,
+            'expense' => true,
+            'income'=> false,
+            'withdrawal' => false
+        ]);
+
+        TransactionType::create([
+            'description' => 'TECNOMECANICA',
+            'entry' => false,
+            'end' => false,
+            'expense' => true,
+            'income'=> false,
+            'withdrawal' => false
+        ]);
     }
 }

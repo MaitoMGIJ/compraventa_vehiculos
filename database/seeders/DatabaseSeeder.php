@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agent;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,16 @@ class DatabaseSeeder extends Seeder
             TransactionTypesTableSeeder::class
         ]);
 
+        $agents = [
+            'ASESOR GENERICO',
+            'MAY',
+            'BARBAS',
+            'SERGIO',
+            'CHUCHO'
+        ];
 
+        foreach($agents as $agent){
+            Agent::create(['name' => $agent]);
+        }
     }
 }
