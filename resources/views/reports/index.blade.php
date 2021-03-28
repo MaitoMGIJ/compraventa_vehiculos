@@ -15,6 +15,7 @@
                 @can('report-transaction-show')
                 @livewire('report-balance-date-form')
                 @livewire('report-transaction-date-form')
+                @livewire('report-expenses-date-form')
                 @endcan
                 @can('report-vehicle-active-show')
                 @livewire('report-vehicle-date-form', [

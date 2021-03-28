@@ -45,6 +45,7 @@ Route::middleware(['auth:sanctum'])->post('admin/expense/store', [AdminControlle
 Route::middleware(['auth:sanctum'])->get('transaction/end', [TransactionController::class, 'end'])->name('transaction.end');
 Route::middleware(['auth:sanctum'])->get('transaction/income', [TransactionController::class, 'income'])->name('transaction.income');
 
+
 Route::middleware(['auth:sanctum'])->get('reports', [ReportController::class, 'index'])->name('reports.index');
 Route::middleware(['auth:sanctum'])->post('reports/transactions', [ReportController::class, 'transactions'])->name('reports.transactions');
 Route::middleware(['auth:sanctum'])->post('reports/balance', [ReportController::class, 'balance'])->name('reports.balance');
@@ -54,6 +55,7 @@ Route::middleware(['auth:sanctum'])->post('reports/vehicles', [ReportController:
 Route::middleware(['auth:sanctum'])->post('reports/commissions', [ReportController::class, 'commissions'])->name('reports.commissions');
 Route::middleware(['auth:sanctum'])->post('reports/topUnsold', [ReportController::class, 'topUnsold'])->name('reports.topUnsold');
 Route::middleware(['auth:sanctum'])->post('reports/vehicles/inventory', [ReportController::class, 'inventory'])->name('reports.vehicles.inventory');
+Route::middleware(['auth:sanctum'])->post('reports/expenses', [ReportController::class, 'expenses'])->name('reports.expenses');
 
 Route::post('brand/type', [FormController::class, 'brandType'])->name('brand.type');
 Route::post('reference/brand/type', [FormController::class, 'referenceBrand'])->name('reference.brand');

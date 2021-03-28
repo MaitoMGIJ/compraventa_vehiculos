@@ -37,8 +37,6 @@ class TransactionsExport implements FromCollection, WithHeadings, ShouldAutoSize
             ->orderBy('transactions.created_at')
             ->get(array_values($this->columns));
 
-            dd($transactions);
-
         return $transactions;
     }
 

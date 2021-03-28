@@ -208,6 +208,12 @@ return [
             'withdrawal' => 'withdrawal',
             'balance' => 'balance'
         ]
+    ],
+    'expenses' => [
+        'xls' => [
+            'expense' => 'expense',
+            'value' => 'value'
+        ]
     ]
 
 ];

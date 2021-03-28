@@ -100,4 +100,11 @@ class ReportController extends Controller
             'inventory' => true
         ]);
     }
+
+    public function expenses(Request $request){
+        return view('reports.expense.list', [
+            'initialDate' => $request->date_start,
+            'endDate' => $request->date_end
+        ]);
+    }
 }
