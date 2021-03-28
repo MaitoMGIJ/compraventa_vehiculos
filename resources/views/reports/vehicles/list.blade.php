@@ -12,7 +12,8 @@
                 'is_active' => $is_active,
                 'license' => $license,
                 'top' => $top,
-                'inventory' => $inventory
+                'inventory' => $inventory,
+                'pawn' => $pawn
             ], key('T'.time()))
         </div>
     </div>

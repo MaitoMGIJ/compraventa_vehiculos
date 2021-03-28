@@ -6,6 +6,7 @@ use App\Exports\VehicleExport;
 use App\Exports\VehicleEndExport;
 use App\Exports\VehicleEntryExport;
 use App\Exports\VehicleInventoryExport;
+use App\Exports\VehiclePawnExport;
 use App\Models\Transaction;
 use App\Models\Vehicle;
 use Livewire\Component;
@@ -21,6 +22,7 @@ class VehiclesTable extends Component
     public $is_active;
     public $license;
     public $inventory;
+    public $pawn;
     public $top;
 
     public function render()
@@ -29,7 +31,21 @@ class VehiclesTable extends Component
         $license = is_null($this->license) ? '' : $this->license;
         $initialDate = is_null($this->initialDate) ? Transaction::min('date') : $this->initialDate;
         $endDate = is_null($this->endDate) ? Transaction::max('date') : $this->endDate;
-        if($this->inventory){
+        if($this->pawn){
+            $v = Vehicle::where('vehicles.license', 'like', "%$license%")
+                ->pawnBetween($initialDate, $endDate)
+                ->get();
+            $vehicles = $v->filter(function($vehicle) use($endDate){
+                $v = Vehicle::find($vehicle->id);
+                if(is_null($v->getEndTransaction())){
+                    return $v;
+                }else{
+                    if($v->getEndTransaction()->date > $endDate){
+                        return $v;
+                    }
+                }
+            });
+        }else if($this->inventory){
             $v = Vehicle::where('vehicles.license', 'like', "%$license%")
                 ->entryBetween($initialDate, $endDate)->get();
             $vehicles = $v->filter(function($vehicle) use($endDate){
@@ -61,7 +77,8 @@ class VehiclesTable extends Component
         return view('livewire.vehicles-table', [
             'vehicles' => $vehicles,
             'license' => $this->license,
-            'inventory' => $this->inventory
+            'inventory' => $this->inventory,
+            'pawn' => $this->pawn
         ]);
     }
 
@@ -90,10 +107,15 @@ class VehiclesTable extends Component
     }
 
     public function exportXLS(){
-        if($this->inventory){
+        if($this->pawn){
+            return Excel::download(
+                new VehiclePawnExport($this->initialDate, $this->endDate, $this->license, config('exports.vehicles.pawn.xls')),
+                    trans_choice('tags.pawn', 2).time().'.xlsx'
+                );
+        }else if($this->inventory){
             return Excel::download(
                 new VehicleInventoryExport($this->initialDate, $this->endDate, $this->license, config('exports.vehicles.inventory.xls')),
-                    trans_choice('tags.vehicle', 2).time().'.xlsx'
+                    trans_choice('tags.inventory', 2).time().'.xlsx'
                 );
         }else if($this->is_active == ''){
             return Excel::download(

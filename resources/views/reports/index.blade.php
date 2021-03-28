@@ -32,11 +32,17 @@
                 @can('report-vehicle-history-show')
                 @livewire('report-vehicle-date-form', [
                     'route' => route('reports.vehicles'),
-                    'title' => trans_choice('tags.report', 1).' '.trans_choice('tags.vehicle', 2).' '.__('tags.history')
+                    'title' => trans_choice('tags.report', 1).' '.__('tags.history')
                 ])
                 @endcan
                 @can('report-commission-show')
                 @livewire('report-commission-agent-date-form')
+                @endcan
+                @can('report-vehicle-history-show')
+                @livewire('report-vehicle-date-form', [
+                    'route' => route('reports.pawn'),
+                    'title' => trans_choice('tags.report', 1).' '.__('tags.pawn')
+                ])
                 @endcan
                 @can('report-top-show')
                 @livewire('report-top-unsold-form')

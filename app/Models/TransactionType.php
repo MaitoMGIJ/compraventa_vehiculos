@@ -34,4 +34,9 @@ class TransactionType extends Model
     public function scopeWithdrawal($query){
         return $query->where('withdrawal', true);
     }
+
+    public function scopePawn($query){
+        return $query->where('entry', true)
+            ->where('id', 2);
+    }
 }

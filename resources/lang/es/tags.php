@@ -46,6 +46,7 @@ return [
     'status' => 'Estado',
     'entry_value' => 'Valor de Entrada',
     'purchase_value' => 'Valor de Compra',
+    'pawn_value' => 'Valor de Empeño',
     'expense_value' => 'Valor de Gastos',
     'sell_value' => 'Valor de Venta',
     'end_value' => 'Valor de Salida',
@@ -74,5 +75,6 @@ return [
     'balance' => 'Balance',
     'withdrawal' => 'Retiro',
     'cash' => 'Efectivo',
-    'total' => 'Total'
+    'total' => 'Total',
+    'pawn' => 'Empeño'
 ];

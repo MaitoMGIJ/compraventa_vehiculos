@@ -45,7 +45,8 @@ class ReportController extends Controller
             'license' => $request->license,
             'is_active' => 'true',
             'top' => false,
-            'inventory' => false
+            'inventory' => false,
+            'pawn' => false
         ]);
     }
 
@@ -56,7 +57,8 @@ class ReportController extends Controller
             'license' => $request->license,
             'is_active' => 'false',
             'top' => false,
-            'inventory' => false
+            'inventory' => false,
+            'pawn' => false
         ]);
     }
 
@@ -67,7 +69,8 @@ class ReportController extends Controller
             'license' => $request->license,
             'is_active' => '',
             'top' => false,
-            'inventory' => false
+            'inventory' => false,
+            'pawn' => false
         ]);
     }
 
@@ -86,7 +89,8 @@ class ReportController extends Controller
             'license' => null,
             'is_active' => '',
             'top' => true,
-            'inventory' => false
+            'inventory' => false,
+            'pawn' => false
         ]);
     }
 
@@ -97,7 +101,8 @@ class ReportController extends Controller
             'license' => $request->license,
             'is_active' => '',
             'top' => false,
-            'inventory' => true
+            'inventory' => true,
+            'pawn' => false
         ]);
     }
 
@@ -105,6 +110,18 @@ class ReportController extends Controller
         return view('reports.expense.list', [
             'initialDate' => $request->date_start,
             'endDate' => $request->date_end
+        ]);
+    }
+
+    public function pawn(Request $request){
+        return view('reports.vehicles.list', [
+            'initialDate' => $request->date_start,
+            'endDate' => $request->date_end,
+            'license' => $request->license,
+            'is_active' => '',
+            'top' => false,
+            'inventory' => false,
+            'pawn' => true
         ]);
     }
 }

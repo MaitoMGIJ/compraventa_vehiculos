@@ -194,7 +194,43 @@ return [
                 'entry_agent' => 'entry_agent',
                 'expense_value' => 'expenses',
             ]
-        ]
+            ],
+            'pawn' => [
+                'csv' => [
+                    'id' => 'vehices.id',
+                    'license' => 'vehicles.license',
+                    'brand' => 'vehicles.brand',
+                    'reference' => 'vehicles.reference',
+                    'model' => 'vehicles.model',
+                    'start_date' => 'entry_date',
+                    'entry_value' => 'entry_value',
+                    'entry_commission' => 'entry_commission',
+                    'entry_agent' => 'entry_agent',
+                    'expense_value' => 'expenses',
+                    'end_date' => 'end_date',
+                    'end_value' => 'end_value',
+                    'end_commission' => 'end_commission',
+                    'end_agent' => 'end_agent',
+                    'earnings' => 'earnings'
+                ],
+                'xls' => [
+                    'id' => 'vehicles.id',
+                    'license' => 'vehicles.license',
+                    'brand' => 'vehicle_brand',
+                    'reference' => 'vehicles.reference',
+                    'model' => 'vehicles.model',
+                    'start_date' => 'entry_date',
+                    'pawn_value' => 'entry_value',
+                    'entry_commission' => 'entry_commission',
+                    'entry_agent' => 'entry_agent',
+                    'expense_value' => 'expenses',
+                    'end_date' => 'end_date',
+                    'end_value' => 'end_value',
+                    'end_commission' => 'end_commission',
+                    'end_agent' => 'end_agent',
+                    'earnings' => 'earnings'
+                ]
+            ]
 
             ],
     'balance' => [

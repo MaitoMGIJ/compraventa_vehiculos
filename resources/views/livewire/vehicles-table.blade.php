@@ -37,7 +37,11 @@
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                @if(!$pawn)
                                 {{ __('tags.purchase_value') }}
+                                @else
+                                {{ __('tags.pawn_value') }}
+                                @endif
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
