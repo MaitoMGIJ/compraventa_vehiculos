@@ -24,5 +24,9 @@ return [
     'report-vehicle-inactive-show' => 'Ver reporte de vehiculos inactivos',
     'report-vehicle-history-show' => 'Ver reporte historico de vehiculos',
     'report-commission-show' => 'Ver reporte de comisiones',
-    'report-top-show' => 'Ver top sin vender'
+    'report-top-show' => 'Ver top sin vender',
+    'report-balance-show' => 'Ver reporte de balance',
+    'report-expense-show' => 'Ver reporte de gastos',
+    'report-pawn-show' => 'Ver reporte de empeños',
+    'report-inventory-show' => 'Ver reporte de inventario'
 ];

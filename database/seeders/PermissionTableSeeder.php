@@ -40,7 +40,11 @@ class PermissionTableSeeder extends Seeder
             'report-vehicle-inactive-show',
             'report-vehicle-history-show',
             'report-commission-show',
-            'report-top-show'
+            'report-top-show',
+            'report-inventory-show',
+            'report-balance-show',
+            'report-expense-show',
+            'report-pawn-show'
          ];
 
          foreach ($permissions as $permission) {

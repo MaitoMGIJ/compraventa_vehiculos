@@ -8,13 +8,19 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
         <div class="bg-transparent overflow-hidden shadow-xl sm:rounded-lg">
             <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-1 mt-8">
+                @can('report-inventory-show')
                 @livewire('report-vehicle-date-form', [
                     'route' => route('reports.vehicles.inventory'),
                     'title' => __('tags.inventory')
                 ])
-                @can('report-transaction-show')
+                @endcan
+                @can('report-balance-show')
                 @livewire('report-balance-date-form')
+                @endcan
+                @can('report-transaction-show')
                 @livewire('report-transaction-date-form')
+                @endcan
+                @can('report-expense-show')
                 @livewire('report-expenses-date-form')
                 @endcan
                 @can('report-vehicle-active-show')
@@ -38,7 +44,7 @@
                 @can('report-commission-show')
                 @livewire('report-commission-agent-date-form')
                 @endcan
-                @can('report-vehicle-history-show')
+                @can('report-pawn-show')
                 @livewire('report-vehicle-date-form', [
                     'route' => route('reports.pawn'),
                     'title' => trans_choice('tags.report', 1).' '.__('tags.pawn')
