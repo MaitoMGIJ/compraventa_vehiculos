@@ -8,6 +8,7 @@ use App\Models\Transaction;
 use App\Models\TransactionType;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use App\Models\VehicleReference;
 use App\Models\VehicleType;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,11 +54,28 @@ class VehicleController extends Controller
             $photo = $request->file('photo');
             $support = $request->file('support');
 
+            $referenceSearch = Str::upper($request->reference);
+
+            $reference = VehicleReference::where('description', '=', $referenceSearch)
+                            ->where('brand', '=', $request->brand)
+                            ->get()
+                            ->first();
+
+            if($reference){
+                $referenceId = $reference->id;
+            }else{
+                $referenceId = VehicleReference::create([
+                    'description' => $referenceSearch,
+                    'brand' => $request->brand,
+                    'is_active' => true
+                ])->id;
+            }
+
             $vehicle = Vehicle::create([
                 'license' => Str::upper($request->license),
                 'type' => $request->vehicle_type,
                 'brand' => $request->brand,
-                'reference' => $request->reference,
+                'reference' => $referenceId,
                 'model' => $request->model,
                 'color' => Str::ucfirst($request->color),
                 'technomechanical_expiration' => $request->technomechanical_expiration,

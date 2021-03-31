@@ -10,7 +10,7 @@
     <label class="block font-medium text-sm text-gray-700" for="license">{{ __('tags.license') }}</label>
     <input type="text" name="license" class="form-input w-full rounded-md shadow-sm" :value="old('license')" required/>
     <label class="block font-medium text-sm text-gray-700" for="brand">{{ __('tags.brand') }}</label>
-    <select wire:model="selectedVehicleBrand" name="brand" id="brand" required class="bg-white text-gray-900 appearance-none border-none inline-block py-3 pl-3 pr-8 rounded leading-tight w-full">
+    <select name="brand" id="brand" required class="bg-white text-gray-900 appearance-none border-none inline-block py-3 pl-3 pr-8 rounded leading-tight w-full">
         <option value="" selected class="pt-6">{{ __('tags.none') }}</option>
         @if(!is_null($selectedVehicleType))
             @foreach($brands as $brand)
@@ -19,16 +19,7 @@
         @endif
     </select>
     <label class="block font-medium text-sm text-gray-700" for="reference">{{ __('tags.reference') }}</label>
-    <select name="reference" id="reference" required class="bg-white text-gray-900 appearance-none border-none inline-block py-3 pl-3 pr-8 rounded leading-tight w-full">
-        <option value="" selected class="pt-6">{{ __('tags.none') }}</option>
-        @if(!is_null($selectedVehicleType))
-        @if(!is_null($selectedVehicleBrand))
-            @foreach($references as $reference)
-                <option value="{{ $reference->id }}" class="pt-6">{{ $reference->description }}</option>
-            @endforeach
-        @endif
-        @endif
-    </select>
+    <input name="reference" type="text" class="form-input w-full rounded-md shadow-sm" :value="old('reference')" required/>
     <div class="grid md:grid-cols-2 gap-4">
         <div>
             <label class="block font-medium text-sm text-gray-700" for="model">{{ __('tags.model') }}</label>
