@@ -76,5 +76,7 @@ return [
     'withdrawal' => 'Retiro',
     'cash' => 'Efectivo',
     'total' => 'Total',
-    'pawn' => 'Empeño'
+    'pawn' => 'Empeño',
+    'update' => 'Actualizar',
+    'delete' => 'Borrar',
 ];

@@ -13,12 +13,18 @@ return [
     ],
     'transaction' => [
         'created' => [
-            'fail' => 'Ha fallado la creación del vehiculo',
+            'fail' => 'Ha fallado la creación de la transacción',
             'done' => 'Se ha creado la transacción correctamente'
         ],
         'updated' => [
-            'fail' => 'Ha fallado la actualización del vehiculo',
-            'done' => 'Se ha actualizado el vehiculo correctamente'
+            'fail' => 'Ha fallado la actualización de la transacción',
+            'done' => 'Se ha actualizado la transacción correctamente'
+        ],
+        'deleted' => [
+            'question' => '¿Esta seguro?',
+            'warning' => 'Este proceso no se puede revertir',
+            'fail' => 'Ha fallado al eliminar la transacción',
+            'done' => 'Se ha eliminado la transacción correctamente'
         ]
     ],
     'agent' => [

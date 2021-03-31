@@ -10,11 +10,26 @@ use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class TransactionController extends Controller
 {
     public function __construct(){
         $this->middleware('role:Admin|Registro');
+    }
+
+    public function index(){
+        $transactions = Transaction::orderBy('created_at', 'desc')->paginate(10);
+        return view('transactions.index', [
+            'transactions' => $transactions
+        ]);
+    }
+
+    public function edit($id){
+        $transaction = Transaction::find($id);
+        return view('transactions.edit', [
+            'transaction' => $transaction
+        ]);
     }
 
     public function end(Request $request){
@@ -95,5 +110,64 @@ class TransactionController extends Controller
                 'message' => $message
             ]);
         }
+    }
+
+    public function update(Request $request, $id){
+        $message = __('messages.transaction.updated.fail');
+        $error = true;
+
+        $this->validate($request, [
+            'value' => 'required|numeric',
+        ]);
+
+        $transaction = Transaction::find($id);
+        $transaction->value = $request->value;
+        if($request->commission){
+            $transaction->commission = $request->commission;
+        }
+        $transaction->save();
+
+        $error = false;
+        $message = __('messages.transaction.updated.done');
+
+        return redirect()->action([TransactionController::class, 'index'])
+                        ->with([
+                            'error' => $error,
+                            'message' => $message
+                        ]);
+    }
+
+    public function destroy(Transaction $transaction){
+        $message = __('messages.transaction.deleted.fail');
+        $error = true;
+
+        if($transaction->hasSupport()){
+            Storage::delete($transaction->urlSupport);
+        }
+        if($transaction->isEnd()){
+            $vehicle = $transaction->vehicle;
+            $vehicle->is_active = true;
+            $vehicle->save();
+            $transaction->delete();
+        }
+        if($transaction->isEntry()){
+            $vehicle = $transaction->vehicle;
+            $transactions = $vehicle->transactions;
+            foreach($transactions as $t){
+                $t->delete();
+            }
+            Storage::delete($vehicle->url);
+            $vehicle->delete();
+        }
+        $transaction->delete();
+
+        $error = false;
+        $message = __('messages.transaction.deleted.done');
+
+        return redirect()->action([TransactionController::class, 'index'])
+                        ->with([
+                            'error' => $error,
+                            'message' => $message
+                        ]);
     }
 }

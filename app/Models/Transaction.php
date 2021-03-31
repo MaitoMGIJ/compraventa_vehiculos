@@ -51,6 +51,18 @@ class Transaction extends Model
         return is_null($this->support) ? false : true;
     }
 
+    public function hasVehicle(){
+        return is_null($this->vehicle) ? false : true;
+    }
+
+    public function isEntry(){
+        return (in_array($this->transaction_type, TransactionType::entry()->get()->pluck('id')->values()->toArray())) ? true : false;
+    }
+
+    public function isEnd(){
+        return (in_array($this->transaction_type, TransactionType::end()->get()->pluck('id')->values()->toArray())) ? true : false;
+    }
+
     public function getUrlSupportAttribute(){
         return url("storage/".$this->support);
     }
