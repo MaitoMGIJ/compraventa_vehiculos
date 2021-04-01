@@ -23,7 +23,7 @@ class TransactionLargeList extends Component
             $transactions = Transaction::join('vehicles', 'vehicles.id', '=', 'transactions.vehicle_id')
                 ->where('vehicles.license', 'like', "%{$this->searchTerm}%")
                 ->orderBy('transactions.created_at', 'desc')
-                ->paginate(10);
+                ->paginate(10, ['transactions.*']);
         }
         return view('livewire.transaction-large-list', [
             'transactions' => $transactions
