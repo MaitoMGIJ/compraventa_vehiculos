@@ -11,7 +11,7 @@
       </style>
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-6">
-        <div class="bg-transparent overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="bg-transparent overflow-auto shadow-xl sm:rounded-lg">
             <div class="holder">
 
                 <div class="card border w-96 hover:shadow-none relative flex flex-col mx-auto shadow-lg m-5">
